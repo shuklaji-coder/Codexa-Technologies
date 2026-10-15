@@ -287,32 +287,32 @@ export default function QuoteModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-[#080813] border border-violet-500/40 rounded-2xl sm:rounded-3xl shadow-[0_0_80px_rgba(108,76,245,0.35)] max-h-[94vh] flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl bg-[#080813] border border-violet-500/40 rounded-2xl sm:rounded-3xl shadow-[0_0_80px_rgba(108,76,245,0.35)] max-h-[96vh] sm:max-h-[94vh] flex flex-col overflow-hidden">
         {/* Subtle Ambient Background Plasma */}
         <div className="absolute top-0 right-1/4 w-[350px] h-[200px] bg-violet-600/15 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-[300px] h-[180px] bg-cyan-500/10 rounded-full blur-[90px] pointer-events-none" />
 
         {/* Modal Top Bar: Header & Direct WhatsApp Shortcut */}
-        <div className="relative z-10 px-5 sm:px-7 pt-5 sm:pt-6 pb-4 border-b border-white/[0.08] flex items-center justify-between gap-3 shrink-0">
-          <div className="flex items-center gap-3">
+        <div className="relative z-10 px-4 sm:px-7 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-white/[0.08] flex items-center justify-between gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <Logo size="sm" showText={false} glow={true} />
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <h3 className="font-heading text-base sm:text-xl font-bold text-white tracking-wide">
-                  Milestone Project Configurator
+                <h3 className="font-heading text-sm sm:text-xl font-bold text-white tracking-wide truncate">
+                  Milestone Configurator
                 </h3>
-                <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-violet-500/15 border border-violet-500/30 text-[10px] font-mono text-[#8B6CFF] font-semibold">
+                <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-violet-500/15 border border-violet-500/30 text-[10px] font-mono text-[#8B6CFF] font-semibold shrink-0">
                   LIVE ESTIMATOR
                 </span>
               </div>
-              <p className="text-[11px] sm:text-xs text-[#A1A1B5]">
-                Configure scope, calculate investment, and lock kickoff roadmap.
+              <p className="text-[10px] sm:text-xs text-[#A1A1B5] truncate">
+                Calculate investment & lock kickoff roadmap.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Quick WhatsApp Tap */}
             <a
               href="https://wa.me/919580849709?text=Hi%20Codexa%20Technologies,%20I%20want%20to%20quickly%20discuss%20a%20new%20project%20scope."
@@ -328,26 +328,26 @@ export default function QuoteModal({
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-white/[0.05] border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl bg-white/[0.05] border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
         {/* 3-Step Wizard Indicator */}
         {step < 4 && (
-          <div className="relative z-10 px-5 sm:px-7 py-3 bg-[#0B0B1A]/80 border-b border-white/[0.06] flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-2 sm:gap-4 font-mono text-[11px] sm:text-xs">
+          <div className="relative z-10 px-3.5 sm:px-7 py-2.5 sm:py-3 bg-[#0B0B1A]/80 border-b border-white/[0.06] flex items-center justify-between shrink-0 overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-1.5 sm:gap-4 font-mono text-[10px] sm:text-xs whitespace-nowrap">
               <button
                 onClick={() => setStep(1)}
-                className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
+                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${
                   step === 1 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
                 }`}
               >
                 <span
-                  className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${
                     step === 1 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
                   }`}
                 >
@@ -360,36 +360,36 @@ export default function QuoteModal({
 
               <button
                 onClick={() => setStep(2)}
-                className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
+                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${
                   step === 2 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
                 }`}
               >
                 <span
-                  className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${
                     step === 2 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
                   }`}
                 >
                   2
                 </span>
-                <span>Features & Velocity</span>
+                <span><span className="hidden xs:inline">Features & </span>Velocity</span>
               </button>
 
               <span className="text-zinc-700">/</span>
 
               <button
                 onClick={() => setStep(3)}
-                className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
+                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${
                   step === 3 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
                 }`}
               >
                 <span
-                  className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${
                     step === 3 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
                   }`}
                 >
                   3
                 </span>
-                <span>Receipt & Launch</span>
+                <span><span className="hidden xs:inline">Receipt & </span>Launch</span>
               </button>
             </div>
 
@@ -402,7 +402,7 @@ export default function QuoteModal({
         )}
 
         {/* Modal Scrollable Body */}
-        <div className="relative z-10 p-5 sm:p-7 overflow-y-auto flex-1">
+        <div className="relative z-10 p-3.5 sm:p-7 overflow-y-auto flex-1">
           {/* ================= STEP 1: CATEGORY SELECTION ================= */}
           {step === 1 && (
             <div className="space-y-4">
@@ -831,10 +831,10 @@ export default function QuoteModal({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => sounds.playClick()}
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-[#20ba59] to-[#2af074] hover:opacity-95 text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-[0_0_30px_rgba(37,211,102,0.4)] transition-all transform hover:scale-[1.02] cursor-pointer"
+                  className="w-full py-3.5 sm:py-4 px-3 rounded-xl bg-gradient-to-r from-[#20ba59] to-[#2af074] hover:opacity-95 text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(37,211,102,0.4)] transition-all transform hover:scale-[1.02] cursor-pointer text-center"
                 >
-                  <MessageSquare className="w-5 h-5 fill-white" />
-                  <span>Send Official Quote to WhatsApp (+91 95808 49709)</span>
+                  <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 fill-white shrink-0" />
+                  <span><span className="hidden sm:inline">Send Official Quote to </span>WhatsApp (+91 95808 49709)</span>
                 </a>
 
                 <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full">

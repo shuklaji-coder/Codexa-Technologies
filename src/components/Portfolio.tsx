@@ -490,8 +490,8 @@ export default function Portfolio({ onSelectProject }: PortfolioProps) {
         </div>
 
         {/* Project Switcher Dock */}
-        <div className="flex items-center justify-center mb-8 sm:mb-12">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 sm:p-2 rounded-2xl bg-[#0B0B18]/90 border border-white/10 backdrop-blur-xl shadow-[0_0_35px_rgba(108,76,245,0.25)]">
+        <div className="flex items-center justify-center mb-8 sm:mb-12 overflow-x-auto no-scrollbar px-2">
+          <div className="inline-flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-2xl bg-[#0B0B18]/90 border border-white/10 backdrop-blur-xl shadow-[0_0_35px_rgba(108,76,245,0.25)] shrink-0 max-w-full">
             {projects.map((project) => {
               const isActive = activeProject.id === project.id;
               return (
@@ -499,16 +499,16 @@ export default function Portfolio({ onSelectProject }: PortfolioProps) {
                   key={project.id}
                   onClick={() => switchToProject(project.id)}
                   onMouseEnter={() => sounds.playHover()}
-                  className={`relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-heading text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
+                  className={`relative px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-heading text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 sm:gap-2.5 cursor-pointer whitespace-nowrap shrink-0 ${
                     isActive
                       ? "bg-violet-600 text-white shadow-[0_0_25px_rgba(108,76,245,0.6)]"
                       : "text-zinc-400 hover:text-white hover:bg-white/[0.05]"
                   }`}
                 >
-                  <span className="text-base sm:text-lg">{project.icon}</span>
+                  <span className="text-sm sm:text-lg">{project.icon}</span>
                   <span className="tracking-wide font-medium">{project.shortName}</span>
                   <span
-                    className={`text-[9px] sm:text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                    className={`hidden xs:inline-block text-[9px] sm:text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full ${
                       isActive
                         ? "bg-white/20 text-white border border-white/30"
                         : "bg-white/[0.06] text-zinc-400"
@@ -535,7 +535,7 @@ export default function Portfolio({ onSelectProject }: PortfolioProps) {
               <BorderBeam size={260} duration={6} colorFrom="#8B6CFF" colorTo="#FFFFFF" />
 
               {/* Browser Window Chrome Top Bar */}
-              <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3.5 bg-[#0D0D1C] border-b border-white/[0.08]">
+              <div className="flex items-center justify-between px-3 sm:px-6 py-2 sm:py-3.5 bg-[#0D0D1C] border-b border-white/[0.08]">
                 {/* Traffic Light Dots & URL */}
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80" />
@@ -568,7 +568,7 @@ export default function Portfolio({ onSelectProject }: PortfolioProps) {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
                   <span className="text-[10px] sm:text-[11px] font-mono text-emerald-400 font-semibold tracking-wider uppercase">
-                    {activeProject.statusBadge}
+                    <span className="hidden xs:inline">LIVE </span>PRODUCTION
                   </span>
 
                   {activeProject.liveUrl && (

@@ -107,11 +107,11 @@ export default function FounderSpotlight() {
             <div className="lg:col-span-5 flex flex-col items-center text-center">
               {/* Profile Avatar Frame with Left-to-Right Entrance Animation */}
               <motion.div
-                initial={{ opacity: 0, x: -100, scale: 0.92 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{
-                  duration: 0.9,
+                  duration: 0.7,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 whileHover={{ scale: 1.04 }}

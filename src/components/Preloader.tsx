@@ -125,34 +125,43 @@ export default function Preloader() {
 
           {/* 4. Sci-Fi HUD Corner Diagnostics */}
           {/* Top-Left */}
-          <div className="absolute top-6 left-6 font-mono text-[9px] sm:text-[10px] text-zinc-400 tracking-wider flex flex-col gap-1 z-20 pointer-events-none">
+          <div className="absolute top-3 left-3 sm:top-6 sm:left-6 font-mono text-[8px] sm:text-[10px] text-zinc-400 tracking-wider flex flex-col gap-0.5 sm:gap-1 z-20 pointer-events-none">
             <div className="flex items-center gap-1.5 text-zinc-300">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               <span className="text-[#8B6CFF] font-semibold">[ CODEXA // OS_v2.4 ]</span>
             </div>
-            <span className="text-zinc-500">CORE ARCHITECTURE: ONLINE</span>
+            <span className="text-zinc-500">CORE: ONLINE</span>
             <span className="text-zinc-600 hidden sm:inline">FRAMEWORK: NEXT.JS 14 / THREE.JS</span>
           </div>
 
           {/* Top-Right */}
-          <div className="absolute top-6 right-6 font-mono text-[9px] sm:text-[10px] text-right text-zinc-400 tracking-wider flex flex-col gap-1 z-20 pointer-events-none">
+          <div className="absolute top-3 right-3 sm:top-6 sm:right-6 font-mono text-[8px] sm:text-[10px] text-right text-zinc-400 tracking-wider flex flex-col gap-0.5 sm:gap-1 z-20 pointer-events-none">
             <div className="flex items-center justify-end gap-1.5 text-emerald-400">
               <Volume2 className="w-3 h-3 text-[#8B6CFF] animate-pulse" />
               <span>ALEXA VOICE: ARMED</span>
             </div>
-            <span className="text-zinc-500">LATENCY: 12ms • 60 FPS</span>
+            <span className="text-zinc-500">60 FPS • 12ms</span>
             <span className="text-zinc-600 hidden sm:inline">AUDIO: 48kHz STUDIO NEURAL</span>
           </div>
 
-          {/* Bottom-Left */}
-          <div className="absolute bottom-6 left-6 font-mono text-[9px] sm:text-[10px] text-zinc-500 tracking-wider flex items-center gap-2 z-20 pointer-events-none">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#8B6CFF]" />
+          {/* Bottom Diagnostics - Mobile Single Pill */}
+          <div className="sm:hidden absolute bottom-3 left-1/2 -translate-x-1/2 font-mono text-[8px] text-zinc-400 tracking-wider flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/10 whitespace-nowrap z-20 pointer-events-none backdrop-blur-md">
+            <ShieldCheck className="w-3 h-3 text-[#8B6CFF]" />
             <span>256-BIT ENCRYPTED</span>
-            <span className="hidden sm:inline text-zinc-600">• GLOBAL CLOUD EDGE</span>
+            <span className="text-zinc-600">•</span>
+            <Cpu className="w-3 h-3 text-[#00f5ff]" />
+            <span>INDIA HQ</span>
           </div>
 
-          {/* Bottom-Right */}
-          <div className="absolute bottom-6 right-6 font-mono text-[9px] sm:text-[10px] text-right text-zinc-500 tracking-wider flex items-center gap-1.5 z-20 pointer-events-none">
+          {/* Bottom-Left (Desktop) */}
+          <div className="hidden sm:flex absolute bottom-6 left-6 font-mono text-[10px] text-zinc-500 tracking-wider items-center gap-2 z-20 pointer-events-none">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#8B6CFF]" />
+            <span>256-BIT ENCRYPTED</span>
+            <span className="text-zinc-600">• GLOBAL CLOUD EDGE</span>
+          </div>
+
+          {/* Bottom-Right (Desktop) */}
+          <div className="hidden sm:flex absolute bottom-6 right-6 font-mono text-[10px] text-right text-zinc-500 tracking-wider items-center gap-1.5 z-20 pointer-events-none">
             <Cpu className="w-3.5 h-3.5 text-[#00f5ff]" />
             <span>HQ: INDIA // WORLDWIDE CLIENTS</span>
           </div>
@@ -160,26 +169,26 @@ export default function Preloader() {
           {/* 5. Center Core Presentation */}
           <div className="relative flex flex-col items-center z-20 px-4 max-w-md w-full">
             {/* Holographic Logo Capsule with Multi-Layer Orbital Rings */}
-            <div className="relative flex items-center justify-center my-2 sm:my-4">
+            <div className="relative flex items-center justify-center my-1 sm:my-4">
               {/* Outer Counter-Clockwise Ring with Dash Array */}
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ repeat: Infinity, duration: 14, ease: "linear" }}
-                className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-dashed border-violet-500/30 pointer-events-none"
+                className="absolute w-28 h-28 sm:w-44 sm:h-44 rounded-full border border-dashed border-violet-500/30 pointer-events-none"
               />
 
               {/* Middle Clockwise Neon Cyan Tick Ring */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-                className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-cyan-400/30 border-t-cyan-400 pointer-events-none shadow-[0_0_20px_rgba(0,245,255,0.2)]"
+                className="absolute w-24 h-24 sm:w-40 sm:h-40 rounded-full border border-cyan-400/30 border-t-cyan-400 pointer-events-none shadow-[0_0_20px_rgba(0,245,255,0.2)]"
               />
 
               {/* Inner Glowing Hex Accent */}
               <motion.div
                 animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0.8, 0.4] }}
                 transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-violet-600/25 blur-xl pointer-events-none"
+                className="absolute w-20 h-20 sm:w-36 sm:h-36 rounded-3xl bg-violet-600/25 blur-xl pointer-events-none"
               />
 
               {/* Logo Core Glass Box */}
@@ -187,7 +196,7 @@ export default function Preloader() {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-violet-500/50 shadow-[0_0_50px_rgba(108,76,245,0.7)] bg-[#0A0A16] relative p-1.5 group"
+                className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-violet-500/50 shadow-[0_0_40px_rgba(108,76,245,0.7)] bg-[#0A0A16] relative p-1.5 group"
               >
                 <div className="w-full h-full relative rounded-xl overflow-hidden">
                   <Image
@@ -206,18 +215,18 @@ export default function Preloader() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.5 }}
-              className="mt-4 sm:mt-5 text-center"
+              className="mt-3 sm:mt-5 text-center"
             >
-              <h1 className="font-heading text-2xl sm:text-3xl font-extrabold tracking-[0.25em] text-white">
+              <h1 className="font-heading text-xl sm:text-3xl font-extrabold tracking-[0.2em] sm:tracking-[0.25em] text-white">
                 CODEXA
               </h1>
-              <p className="font-heading text-[10px] sm:text-[11px] font-semibold tracking-[0.4em] text-[#8B6CFF] uppercase mt-1">
+              <p className="font-heading text-[9px] sm:text-[11px] font-semibold tracking-[0.35em] sm:tracking-[0.4em] text-[#8B6CFF] uppercase mt-1">
                 TECHNOLOGIES
               </p>
             </motion.div>
 
             {/* Large Futuristic Monospace Digital Percentage */}
-            <div className="mt-6 flex items-baseline justify-center gap-1 font-mono">
+            <div className="mt-4 sm:mt-6 flex items-baseline justify-center gap-1 font-mono">
               <span className="text-3xl sm:text-4xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                 {String(progress).padStart(2, "0")}
               </span>
@@ -225,7 +234,7 @@ export default function Preloader() {
             </div>
 
             {/* Precision Laser Fill Progress Bar */}
-            <div className="mt-3 w-56 sm:w-72 h-1.5 bg-white/10 rounded-full overflow-hidden relative border border-white/10 p-[1px]">
+            <div className="mt-2.5 sm:mt-3 w-48 sm:w-72 h-1.5 bg-white/10 rounded-full overflow-hidden relative border border-white/10 p-[1px]">
               <motion.div
                 style={{ width: `${progress}%` }}
                 className="h-full bg-gradient-to-r from-violet-600 via-[#8B6CFF] to-[#00f5ff] rounded-full shadow-[0_0_15px_#00f5ff] transition-all duration-75"
@@ -233,8 +242,8 @@ export default function Preloader() {
             </div>
 
             {/* Real-Time Cyber Boot Sequence Terminal Line */}
-            <div className="mt-3 w-full text-center h-5 flex items-center justify-center">
-              <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-zinc-400 truncate px-2">
+            <div className="mt-2.5 sm:mt-3 w-full text-center h-5 flex items-center justify-center">
+              <span className="font-mono text-[8px] sm:text-[10px] tracking-wider text-zinc-400 truncate max-w-[280px] sm:max-w-md px-2">
                 {getBootStatus()}
               </span>
             </div>
@@ -244,7 +253,7 @@ export default function Preloader() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="mt-6"
+              className="mt-4 sm:mt-6"
             >
               <button
                 type="button"
@@ -252,19 +261,22 @@ export default function Preloader() {
                   e.stopPropagation();
                   handleDismiss();
                 }}
-                className="group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#0D0D1F] hover:bg-violet-950/80 border border-violet-500/40 hover:border-violet-400 shadow-[0_0_25px_rgba(108,76,245,0.35)] transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group relative inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0D0D1F] hover:bg-violet-950/80 border border-violet-500/40 hover:border-violet-400 shadow-[0_0_25px_rgba(108,76,245,0.35)] transition-all duration-300 hover:scale-105 cursor-pointer"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-white tracking-widest uppercase">
-                  ENTER CODEXA WITH SOUND 🔊
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span className="font-mono text-[9.5px] sm:text-[11px] font-semibold text-white tracking-wider sm:tracking-widest uppercase">
+                  ENTER WITH SOUND 🔊
                 </span>
-                <Sparkles className="w-3.5 h-3.5 text-[#00f5ff] group-hover:rotate-12 transition-transform" />
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00f5ff] group-hover:rotate-12 transition-transform shrink-0" />
               </button>
             </motion.div>
 
             {/* Micro Helper Tip */}
-            <p className="mt-3 text-[9px] font-mono text-zinc-500 tracking-wider">
+            <p className="hidden sm:block mt-3 text-[9px] font-mono text-zinc-500 tracking-wider">
               [ PRESS SPACE OR CLICK ANYWHERE TO LAUNCH ]
+            </p>
+            <p className="block sm:hidden mt-2.5 text-[8.5px] font-mono text-zinc-400 tracking-wider animate-pulse">
+              [ TAP ANYWHERE TO ENTER ]
             </p>
           </div>
         </motion.div>
