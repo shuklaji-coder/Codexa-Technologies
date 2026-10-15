@@ -1,0 +1,274 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { sounds } from "@/utils/soundEffects";
+import { Volume2, Sparkles, ShieldCheck, Cpu, Terminal } from "lucide-react";
+
+export default function Preloader() {
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const dismissedRef = useRef(false);
+
+  const handleDismiss = () => {
+    if (dismissedRef.current) return;
+    dismissedRef.current = true;
+    setProgress(100);
+
+    try {
+      sounds.playSuccess();
+    } catch {}
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("codexa-enter"));
+    }
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 220);
+  };
+
+  useEffect(() => {
+    // Dynamic authentic progress counter that counts up to 100% over ~2.0 seconds
+    const startTime = Date.now();
+    const duration = 2100; // 2.1 seconds for rich cinematic feel
+
+    const interval = setInterval(() => {
+      if (dismissedRef.current) {
+        clearInterval(interval);
+        return;
+      }
+
+      const elapsed = Date.now() - startTime;
+      const rawProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
+
+      // Non-linear easing curve for high-tech decompression feel
+      const eased = Math.min(
+        100,
+        Math.floor(
+          rawProgress < 40
+            ? rawProgress * 1.15
+            : rawProgress < 75
+            ? rawProgress * 0.95
+            : rawProgress
+        )
+      );
+
+      setProgress((prev) => Math.max(prev, eased));
+
+      if (elapsed >= duration) {
+        clearInterval(interval);
+        setProgress(100);
+        setTimeout(handleDismiss, 200);
+      }
+    }, 35);
+
+    // Keyboard trigger (Enter or Space)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " " || e.key === "Escape") {
+        handleDismiss();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  // Dynamic Terminal Diagnostic Message
+  const getBootStatus = () => {
+    if (progress < 18) return ">> [SYS_BOOT] INITIALIZING NEURAL CORE ARCHITECTURE...";
+    if (progress < 42) return ">> [GPU_ACCEL] COMPILING 3D ROBOT COMPANION SHADERS...";
+    if (progress < 68) return ">> [AUDIO_SYNC] SYNTHESIZING ALEXA NEURAL AI VOICE...";
+    if (progress < 88) return ">> [CLIENT_STREAM] PRE-BUFFERING CHALOJI & MITS ASSETS...";
+    if (progress < 99) return ">> [PIPELINE_OK] 60 FPS ULTRA-LUXURY INTERACTION LOCKED...";
+    return ">> [STATUS_OK] PLATFORM READY • ENTERING CODEXA TECHNOLOGIES";
+  };
+
+  return (
+    <AnimatePresence>
+      {loading && (
+        <motion.div
+          key="preloader"
+          onClick={handleDismiss}
+          initial={{ opacity: 1 }}
+          exit={{
+            y: "-100%",
+            transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1] },
+          }}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#030308] text-white cursor-pointer select-none overflow-hidden"
+          title="Click anywhere to enter with Sound"
+        >
+          {/* 1. Cyber Grid Matrix Background */}
+          <div className="absolute inset-0 bg-cyber-grid opacity-25 pointer-events-none" />
+
+          {/* 2. Sweeping Cyber Laser Scanning Beam */}
+          <motion.div
+            animate={{
+              y: ["-10vh", "110vh"],
+              opacity: [0, 0.8, 0.8, 0],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 3.2,
+              ease: "easeInOut",
+            }}
+            className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00f5ff]/60 via-[#8B6CFF]/80 to-transparent shadow-[0_0_20px_#8B6CFF] pointer-events-none z-10"
+          />
+
+          {/* 3. Central Ambient Multi-Glow */}
+          <div className="absolute w-[500px] h-[500px] bg-violet-600/20 rounded-full blur-[140px] pointer-events-none animate-pulse" />
+          <div className="absolute w-[280px] h-[280px] bg-cyan-500/15 rounded-full blur-[90px] pointer-events-none" />
+
+          {/* 4. Sci-Fi HUD Corner Diagnostics */}
+          {/* Top-Left */}
+          <div className="absolute top-6 left-6 font-mono text-[9px] sm:text-[10px] text-zinc-400 tracking-wider flex flex-col gap-1 z-20 pointer-events-none">
+            <div className="flex items-center gap-1.5 text-zinc-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              <span className="text-[#8B6CFF] font-semibold">[ CODEXA // OS_v2.4 ]</span>
+            </div>
+            <span className="text-zinc-500">CORE ARCHITECTURE: ONLINE</span>
+            <span className="text-zinc-600 hidden sm:inline">FRAMEWORK: NEXT.JS 14 / THREE.JS</span>
+          </div>
+
+          {/* Top-Right */}
+          <div className="absolute top-6 right-6 font-mono text-[9px] sm:text-[10px] text-right text-zinc-400 tracking-wider flex flex-col gap-1 z-20 pointer-events-none">
+            <div className="flex items-center justify-end gap-1.5 text-emerald-400">
+              <Volume2 className="w-3 h-3 text-[#8B6CFF] animate-pulse" />
+              <span>ALEXA VOICE: ARMED</span>
+            </div>
+            <span className="text-zinc-500">LATENCY: 12ms • 60 FPS</span>
+            <span className="text-zinc-600 hidden sm:inline">AUDIO: 48kHz STUDIO NEURAL</span>
+          </div>
+
+          {/* Bottom-Left */}
+          <div className="absolute bottom-6 left-6 font-mono text-[9px] sm:text-[10px] text-zinc-500 tracking-wider flex items-center gap-2 z-20 pointer-events-none">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#8B6CFF]" />
+            <span>256-BIT ENCRYPTED</span>
+            <span className="hidden sm:inline text-zinc-600">• GLOBAL CLOUD EDGE</span>
+          </div>
+
+          {/* Bottom-Right */}
+          <div className="absolute bottom-6 right-6 font-mono text-[9px] sm:text-[10px] text-right text-zinc-500 tracking-wider flex items-center gap-1.5 z-20 pointer-events-none">
+            <Cpu className="w-3.5 h-3.5 text-[#00f5ff]" />
+            <span>HQ: INDIA // WORLDWIDE CLIENTS</span>
+          </div>
+
+          {/* 5. Center Core Presentation */}
+          <div className="relative flex flex-col items-center z-20 px-4 max-w-md w-full">
+            {/* Holographic Logo Capsule with Multi-Layer Orbital Rings */}
+            <div className="relative flex items-center justify-center my-2 sm:my-4">
+              {/* Outer Counter-Clockwise Ring with Dash Array */}
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ repeat: Infinity, duration: 14, ease: "linear" }}
+                className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-dashed border-violet-500/30 pointer-events-none"
+              />
+
+              {/* Middle Clockwise Neon Cyan Tick Ring */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+                className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-cyan-400/30 border-t-cyan-400 pointer-events-none shadow-[0_0_20px_rgba(0,245,255,0.2)]"
+              />
+
+              {/* Inner Glowing Hex Accent */}
+              <motion.div
+                animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0.8, 0.4] }}
+                transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-violet-600/25 blur-xl pointer-events-none"
+              />
+
+              {/* Logo Core Glass Box */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-violet-500/50 shadow-[0_0_50px_rgba(108,76,245,0.7)] bg-[#0A0A16] relative p-1.5 group"
+              >
+                <div className="w-full h-full relative rounded-xl overflow-hidden">
+                  <Image
+                    src="/logo.png"
+                    alt="Codexa Technologies"
+                    fill
+                    priority
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Brand Title with High-Tech Metallic Gradient */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.5 }}
+              className="mt-4 sm:mt-5 text-center"
+            >
+              <h1 className="font-heading text-2xl sm:text-3xl font-extrabold tracking-[0.25em] text-white">
+                CODEXA
+              </h1>
+              <p className="font-heading text-[10px] sm:text-[11px] font-semibold tracking-[0.4em] text-[#8B6CFF] uppercase mt-1">
+                TECHNOLOGIES
+              </p>
+            </motion.div>
+
+            {/* Large Futuristic Monospace Digital Percentage */}
+            <div className="mt-6 flex items-baseline justify-center gap-1 font-mono">
+              <span className="text-3xl sm:text-4xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                {String(progress).padStart(2, "0")}
+              </span>
+              <span className="text-sm sm:text-base font-semibold text-[#8B6CFF]">%</span>
+            </div>
+
+            {/* Precision Laser Fill Progress Bar */}
+            <div className="mt-3 w-56 sm:w-72 h-1.5 bg-white/10 rounded-full overflow-hidden relative border border-white/10 p-[1px]">
+              <motion.div
+                style={{ width: `${progress}%` }}
+                className="h-full bg-gradient-to-r from-violet-600 via-[#8B6CFF] to-[#00f5ff] rounded-full shadow-[0_0_15px_#00f5ff] transition-all duration-75"
+              />
+            </div>
+
+            {/* Real-Time Cyber Boot Sequence Terminal Line */}
+            <div className="mt-3 w-full text-center h-5 flex items-center justify-center">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-zinc-400 truncate px-2">
+                {getBootStatus()}
+              </span>
+            </div>
+
+            {/* Interactive "Click to Enter" Action Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-6"
+            >
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDismiss();
+                }}
+                className="group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#0D0D1F] hover:bg-violet-950/80 border border-violet-500/40 hover:border-violet-400 shadow-[0_0_25px_rgba(108,76,245,0.35)] transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-white tracking-widest uppercase">
+                  ENTER CODEXA WITH SOUND 🔊
+                </span>
+                <Sparkles className="w-3.5 h-3.5 text-[#00f5ff] group-hover:rotate-12 transition-transform" />
+              </button>
+            </motion.div>
+
+            {/* Micro Helper Tip */}
+            <p className="mt-3 text-[9px] font-mono text-zinc-500 tracking-wider">
+              [ PRESS SPACE OR CLICK ANYWHERE TO LAUNCH ]
+            </p>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
