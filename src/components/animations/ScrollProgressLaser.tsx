@@ -11,7 +11,7 @@ export default function ScrollProgressLaser() {
   });
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-[3px] pointer-events-none origin-left">
+    <div className="fixed top-0 left-0 right-0 z-50 h-[3px] pointer-events-none origin-left overflow-hidden">
       {/* Background track subtle glow */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
 

@@ -124,7 +124,7 @@ export default function ParticleCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60"
+      className="fixed inset-0 pointer-events-none z-0 opacity-60 w-full h-full max-w-full overflow-hidden"
     />
   );
 }
