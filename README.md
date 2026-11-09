@@ -1,4 +1,4 @@
-# Codexa-Technologies
+# Techlifa-Technologies
 
 > **Architecting High-Performance Digital Experiences, Mobile Ecosystems & Next-Gen Enterprise Platforms.**
 
@@ -12,11 +12,11 @@
 
 ## ⚡ Overview
 
-**Codexa Technologies** is an elite full-cycle software agency founded by **Rohan Shukla** (Founder & Lead Software Architect). We design and build ultra-fast web applications, mobile platforms, and scalable backend ecosystems for startups, scaleups, and visionary enterprises.
+**Techlifa Technologies** is an elite full-cycle software agency founded by **Rohan Shukla** (Founder & Lead Software Architect). We design and build ultra-fast web applications, mobile platforms, and scalable backend ecosystems for startups, scaleups, and visionary enterprises.
 
-- 🌐 **Website**: [Codexa Technologies](https://codexatechnologies.com)
+- 🌐 **Website**: [Techlifa Technologies](https://techlifatech.in)
 - 📞 **WhatsApp / Direct Line**: `+91 95808 49709`
-- ✉️ **Inquiries**: `codexatechnologiesint@gmail.com`
+- ✉️ **Inquiries**: `techlifatechnologiesint@gmail.com`
 - 💼 **Founder LinkedIn**: [Rohan Shukla](https://www.linkedin.com/in/rohan-shukla-0b8889321/)
 
 ---
@@ -44,8 +44,8 @@
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/shuklaji-coder/Codexa-Technologies.git
-cd Codexa-Technologies
+git clone https://github.com/shuklaji-coder/Techlifa-Technologies.git
+cd Techlifa-Technologies
 ```
 
 ### 2. Install dependencies
@@ -69,4 +69,4 @@ npm run start
 
 ## 🛡️ License
 
-Copyright © 2026 Codexa Technologies. All Rights Reserved. Engineered with precision by Rohan Shukla & Team.
+Copyright © 2026 Techlifa Technologies. All Rights Reserved. Engineered with precision by Rohan Shukla & Team.

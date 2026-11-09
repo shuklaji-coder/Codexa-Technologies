@@ -315,7 +315,7 @@ export default function QuoteModal({
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Quick WhatsApp Tap */}
             <a
-              href="https://wa.me/919580849709?text=Hi%20Codexa%20Technologies,%20I%20want%20to%20quickly%20discuss%20a%20new%20project%20scope."
+              href="https://wa.me/919580849709?text=Hi%20Techlifa%20Technologies,%20I%20want%20to%20quickly%20discuss%20a%20new%20project%20scope."
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-mono transition-all"
@@ -747,7 +747,7 @@ export default function QuoteModal({
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-400">
-                    Official email dispatch: <span className="text-zinc-300">codexatechnologiesint@gmail.com</span>
+                    Official email dispatch: <span className="text-zinc-300">techlifatechnologiesint@gmail.com</span>
                   </div>
                 </div>
               </div>
@@ -870,7 +870,7 @@ export default function QuoteModal({
               </div>
 
               <p className="text-[11px] font-mono text-zinc-400">
-                Official inquiry dispatch confirmed: <span className="text-zinc-300">codexatechnologiesint@gmail.com</span>
+                Official inquiry dispatch confirmed: <span className="text-zinc-300">techlifatechnologiesint@gmail.com</span>
               </p>
             </div>
           )}

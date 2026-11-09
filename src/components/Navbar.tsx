@@ -147,7 +147,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             </button>
 
             <a
-              href="https://wa.me/919580849709?text=Hello%20Codexa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
+              href="https://wa.me/919580849709?text=Hello%20Techlifa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-3 rounded-xl bg-emerald-600/15 hover:bg-emerald-600/25 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold text-center flex items-center justify-center gap-2 transition-all"
@@ -157,11 +157,11 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             </a>
 
             <a
-              href="mailto:codexatechnologiesint@gmail.com"
+              href="mailto:techlifatechnologiesint@gmail.com"
               className="w-full py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-zinc-300 hover:text-white font-mono text-[11px] text-center flex items-center justify-center gap-2 transition-all"
             >
               <Mail className="w-3.5 h-3.5 text-[#8B6CFF]" />
-              <span>codexatechnologiesint@gmail.com</span>
+              <span>techlifatechnologiesint@gmail.com</span>
             </a>
           </div>
         </div>

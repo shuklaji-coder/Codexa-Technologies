@@ -25,11 +25,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Codexa Technologies | High-End Website & Mobile App Development Agency",
+  title: "Techlifa Technologies | High-End Website & Mobile App Development Agency",
   description:
     "We build unstoppable digital products. Premium website development, custom web apps, and native iOS & Android mobile applications engineered with speed, design, and code that scales.",
   keywords: [
-    "Codexa Technologies",
+    "Techlifa Technologies",
     "Website Development India",
     "Mobile App Development",
     "Next.js Development Agency",
@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     "E-commerce Website Development",
     "Bengaluru Tech Agency",
   ],
-  authors: [{ name: "Codexa Technologies" }],
-  creator: "Codexa Technologies",
-  publisher: "Codexa Technologies",
-  metadataBase: new URL("https://codexatech.in"),
+  authors: [{ name: "Techlifa Technologies" }],
+  creator: "Techlifa Technologies",
+  publisher: "Techlifa Technologies",
+  metadataBase: new URL("https://techlifatech.in"),
   alternates: {
     canonical: "/",
   },
@@ -54,17 +54,17 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Codexa Technologies | Premium Website & App Development Agency",
+    title: "Techlifa Technologies | Premium Website & App Development Agency",
     description:
       "We Build Digital Products That Make Brands Unstoppable. Next.js, React, Flutter, and Full-Stack Engineering for Ambitious Companies.",
-    url: "https://codexatech.in",
-    siteName: "Codexa Technologies",
+    url: "https://techlifatech.in",
+    siteName: "Techlifa Technologies",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 1200,
-        alt: "Codexa Technologies - Chrome CX Logo",
+        alt: "Techlifa Technologies Logo",
       },
     ],
     locale: "en_IN",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Codexa Technologies | High-End Digital Products",
+    title: "Techlifa Technologies | High-End Digital Products",
     description: "Premium websites and mobile apps engineered with speed, design, and code that scales.",
     images: ["/logo.png"],
   },

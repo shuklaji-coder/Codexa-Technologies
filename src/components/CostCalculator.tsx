@@ -89,7 +89,7 @@ export default function CostCalculator() {
     saas: "Custom Web App / SaaS",
   }[projectType];
 
-  const waMessage = `Hi Codexa Technologies! I just calculated my project estimate on your website:
+  const waMessage = `Hi Techlifa Technologies! I just calculated my project estimate on your website:
 • Project Type: ${projectTypeName}
 • Scope: ${currentBase.label}
 • Estimated Cost: ₹${totalPrice.toLocaleString("en-IN")} (+ GST)

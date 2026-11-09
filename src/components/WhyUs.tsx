@@ -50,7 +50,7 @@ export default function WhyUs() {
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-[#8B6CFF] text-xs font-mono tracking-wider uppercase mb-4"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#8B6CFF]" />
-            <span>The Codexa Advantage</span>
+            <span>The Techlifa Advantage</span>
           </motion.div>
 
           <motion.h2

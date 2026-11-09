@@ -16,8 +16,8 @@ interface RobotPhrase {
 const PHRASES: RobotPhrase[] = [
   {
     audioSrc: "/robot-welcome.mp3",
-    speechText: "Hello! Welcome to Codexa Technologies.",
-    displayText: "👋 Hello! Welcome to Codexa Technologies.",
+    speechText: "Hello! Welcome to Techlifa Technologies.",
+    displayText: "👋 Hello! Welcome to Techlifa Technologies.",
     glow: 0xc4b5fd,
     light: 0xffffff,
   },
@@ -46,7 +46,7 @@ const PHRASES: RobotPhrase[] = [
 
 export default function Robot3DCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const [speechText, setSpeechText] = useState("👋 Hello! Welcome to Codexa Technologies.");
+  const [speechText, setSpeechText] = useState("👋 Hello! Welcome to Techlifa Technologies.");
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const headGroupRef = useRef<THREE.Group | null>(null);
@@ -574,7 +574,7 @@ export default function Robot3DCanvas() {
             .then(() => {
               hasSuccessfullySpoken = true;
               setIsSpeaking(true);
-              setSpeechText("👋 Hello! Welcome to Codexa Technologies.");
+              setSpeechText("👋 Hello! Welcome to Techlifa Technologies.");
 
               // Head greeting nod
               if (headGroupRef.current) {
@@ -618,7 +618,7 @@ export default function Robot3DCanvas() {
       window.removeEventListener("pointerdown", handleFirstGesture);
       window.removeEventListener("touchstart", handleFirstGesture);
       window.removeEventListener("keydown", handleFirstGesture);
-      window.removeEventListener("codexa-enter", handleFirstGesture);
+      window.removeEventListener("techlifa-enter", handleFirstGesture);
     };
 
     // User gesture listeners (ANY tap, click, or keydown anywhere on the page)
@@ -626,7 +626,7 @@ export default function Robot3DCanvas() {
     window.addEventListener("pointerdown", handleFirstGesture, { passive: true });
     window.addEventListener("touchstart", handleFirstGesture, { passive: true });
     window.addEventListener("keydown", handleFirstGesture, { passive: true });
-    window.addEventListener("codexa-enter", handleFirstGesture, { passive: true });
+    window.addEventListener("techlifa-enter", handleFirstGesture, { passive: true });
 
     // Autonomous playback attempts:
     // 1. Initial attempt on load (at 200ms)
@@ -696,7 +696,7 @@ export default function Robot3DCanvas() {
           <span>🎙️</span>
           <span>{isSpeaking ? "Alexa AI Speaking..." : "Alexa Voice Auto-Active"}</span>
           <span className="w-1 h-1 rounded-full bg-emerald-400" />
-          <span className="text-[#8B6CFF] font-semibold">Codexa AI</span>
+          <span className="text-[#8B6CFF] font-semibold">Techlifa AI</span>
         </button>
       </div>
     </div>

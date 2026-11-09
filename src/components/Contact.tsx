@@ -98,7 +98,7 @@ export default function Contact({
               <div className="space-y-3 sm:space-y-4 pt-1 sm:pt-2">
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/919580849709?text=Hi%20Codexa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
+                  href="https://wa.me/919580849709?text=Hi%20Techlifa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-[#25D366]/50 hover:bg-[#25D366]/5 transition-all flex items-center gap-3.5 sm:gap-4 group"
@@ -119,7 +119,7 @@ export default function Contact({
 
                 {/* Email */}
                 <a
-                  href="mailto:codexatechnologiesint@gmail.com"
+                  href="mailto:techlifatechnologiesint@gmail.com"
                   className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-violet-500/50 hover:bg-violet-500/5 transition-all flex items-center gap-3.5 sm:gap-4 group"
                 >
                   <div className="p-3 rounded-xl bg-violet-500/10 text-[#8B6CFF] border border-violet-500/20 group-hover:scale-105 transition-transform shrink-0">
@@ -128,7 +128,7 @@ export default function Contact({
                   <div>
                     <div className="text-[11px] sm:text-xs font-mono text-zinc-400">Official Inquiries</div>
                     <div className="text-sm font-semibold text-white group-hover:text-[#8B6CFF] transition-colors break-all">
-                      codexatechnologiesint@gmail.com
+                      techlifatechnologiesint@gmail.com
                     </div>
                     <div className="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">
                       RFP & Project Proposals
@@ -157,7 +157,7 @@ export default function Contact({
             {/* Social Icons */}
             <div className="pt-4 sm:pt-6 border-t border-white/[0.08]">
               <span className="text-[11px] sm:text-xs font-mono text-zinc-400 uppercase tracking-wider block mb-2.5">
-                Follow Codexa Technologies
+                Follow Techlifa Technologies
               </span>
               <div className="flex items-center gap-2.5">
                 {[
@@ -193,12 +193,12 @@ export default function Contact({
                     Message Received!
                   </h3>
                   <p className="text-xs sm:text-sm text-[#A1A1B5] max-w-md mb-6 sm:mb-8 px-2">
-                    Thank you for reaching out to Codexa Technologies. Our lead engineer is reviewing your brief and will connect with you within 2 hours.
+                    Thank you for reaching out to Techlifa Technologies. Our lead engineer is reviewing your brief and will connect with you within 2 hours.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
                     <a
                       href={`https://wa.me/919580849709?text=${encodeURIComponent(
-                        `Hi Codexa Technologies! I just submitted an inquiry on your website:\n• Name: ${formData.name || "Client"}\n• Service: ${formData.service}\n• Budget: ${formData.budget}\nCan we discuss my project kickoff?`
+                        `Hi Techlifa Technologies! I just submitted an inquiry on your website:\n• Name: ${formData.name || "Client"}\n• Service: ${formData.service}\n• Budget: ${formData.budget}\nCan we discuss my project kickoff?`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"

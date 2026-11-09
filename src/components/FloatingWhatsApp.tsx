@@ -25,10 +25,10 @@ export default function FloatingWhatsApp() {
 
       {/* Button badge */}
       <a
-        href="https://wa.me/919580849709?text=Hello%20Codexa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
+        href="https://wa.me/919580849709?text=Hello%20Techlifa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with Codexa Technologies on WhatsApp"
+        aria-label="Chat with Techlifa Technologies on WhatsApp"
         className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-[#20ba59] to-[#2af074] text-white shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer border border-white/20"
       >
         {/* Pulsing ring */}

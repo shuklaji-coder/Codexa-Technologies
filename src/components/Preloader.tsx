@@ -21,7 +21,7 @@ export default function Preloader() {
     } catch {}
 
     if (typeof window !== "undefined") {
-      window.dispatchEvent(new CustomEvent("codexa-enter"));
+      window.dispatchEvent(new CustomEvent("techlifa-enter"));
     }
 
     setTimeout(() => {
@@ -84,7 +84,7 @@ export default function Preloader() {
     if (progress < 68) return ">> [AUDIO_SYNC] SYNTHESIZING NEURAL AI VOICE...";
     if (progress < 88) return ">> [CLIENT_STREAM] BUFFERING SHOWCASE ASSETS...";
     if (progress < 99) return ">> [PIPELINE_OK] 60 FPS LUXURY INTERACTION...";
-    return ">> [STATUS_OK] PLATFORM READY • ENTERING CODEXA";
+    return ">> [STATUS_OK] PLATFORM READY • ENTERING TECHLIFA";
   };
 
   return (
@@ -129,7 +129,7 @@ export default function Preloader() {
             {/* Top-Left: OS Diagnostic */}
             <div className="flex items-center gap-1.5 text-zinc-300 min-w-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0" />
-              <span className="text-[#8B6CFF] font-semibold truncate">[ CODEXA // OS ]</span>
+              <span className="text-[#8B6CFF] font-semibold truncate">[ TECHLIFA // OS ]</span>
               <span className="text-zinc-600 hidden md:inline">• NEXT.JS 14</span>
             </div>
 
@@ -176,7 +176,7 @@ export default function Preloader() {
                 <div className="w-full h-full relative rounded-xl overflow-hidden">
                   <Image
                     src="/logo.png"
-                    alt="Codexa Technologies"
+                    alt="Techlifa Technologies"
                     fill
                     priority
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -193,7 +193,7 @@ export default function Preloader() {
               className="mt-2 text-center"
             >
               <h1 className="font-heading text-xl sm:text-3xl font-extrabold tracking-[0.2em] text-white">
-                CODEXA
+                TECHLIFA
               </h1>
               <p className="font-heading text-[9px] sm:text-[11px] font-semibold tracking-[0.35em] text-[#8B6CFF] uppercase mt-0.5">
                 TECHNOLOGIES

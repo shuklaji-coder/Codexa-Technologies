@@ -6,7 +6,7 @@ class SoundManager {
 
   constructor() {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("codexa_sound_enabled");
+      const saved = localStorage.getItem("techlifa_sound_enabled");
       if (saved !== null) {
         this.enabled = saved === "true";
       }
@@ -30,7 +30,7 @@ class SoundManager {
   public setEnabled(val: boolean) {
     this.enabled = val;
     if (typeof window !== "undefined") {
-      localStorage.setItem("codexa_sound_enabled", String(val));
+      localStorage.setItem("techlifa_sound_enabled", String(val));
     }
     if (val) {
       this.playClick();

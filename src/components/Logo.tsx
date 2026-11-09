@@ -43,7 +43,7 @@ export default function Logo({
         >
           <Image
             src="/logo.png"
-            alt="Codexa Technologies Logo"
+            alt="Techlifa Technologies Logo"
             width={current.img}
             height={current.img}
             priority
@@ -56,7 +56,7 @@ export default function Logo({
       {showText && (
         <div className="flex flex-col">
           <div className="flex items-center gap-1 font-heading font-bold uppercase leading-none">
-            <span className="text-metallic">{`CODEXA`}</span>
+            <span className="text-metallic">{`TECHLIFA`}</span>
           </div>
           <span
             className={`font-heading font-medium tracking-[0.25em] text-[#8B6CFF] uppercase ${current.sub} mt-0.5`}

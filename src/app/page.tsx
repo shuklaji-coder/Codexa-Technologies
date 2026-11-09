@@ -79,7 +79,7 @@ export default function Home() {
       {/* 4. Why Choose Us Section (Animated Rolling Counters + 3D Tilt Cards) */}
       <WhyUs />
 
-      {/* 5. Agency Comparison Matrix (Typical Agency vs Codexa) */}
+      {/* 5. Agency Comparison Matrix (Typical Agency vs Techlifa) */}
       <AgencyComparison />
 
       {/* 6. Portfolio / Work Section (Featured Client Builds Showcase) */}

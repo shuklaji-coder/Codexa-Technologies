@@ -20,7 +20,7 @@ export default function Footer() {
             <Logo size="lg" glow={true} />
 
             <p className="text-sm text-[#A1A1B5] leading-relaxed max-w-sm">
-              Codexa Technologies is an elite web and mobile app development agency based in India. We design and engineer digital flagships for ambitious businesses worldwide.
+              Techlifa Technologies is an elite web and mobile app development agency based in India. We design and engineer digital flagships for ambitious businesses worldwide.
             </p>
 
             {/* Live Operational Status */}
@@ -34,7 +34,7 @@ export default function Footer() {
 
             {/* Direct Phone / WhatsApp Pill */}
             <a
-              href="https://wa.me/919580849709?text=Hello%20Codexa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
+              href="https://wa.me/919580849709?text=Hello%20Techlifa%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/[0.03] hover:bg-emerald-950/40 border border-white/10 hover:border-emerald-500/40 text-zinc-300 hover:text-emerald-300 text-xs font-mono transition-all"
@@ -45,11 +45,11 @@ export default function Footer() {
 
             {/* Direct Email Pill */}
             <a
-              href="mailto:codexatechnologiesint@gmail.com"
+              href="mailto:techlifatechnologiesint@gmail.com"
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/[0.03] hover:bg-violet-950/40 border border-white/10 hover:border-violet-500/40 text-zinc-300 hover:text-white text-xs font-mono transition-all"
             >
               <Mail className="w-3.5 h-3.5 text-[#8B6CFF]" />
-              <span>codexatechnologiesint@gmail.com</span>
+              <span>techlifatechnologiesint@gmail.com</span>
             </a>
 
             {/* Social Icons */}
@@ -198,7 +198,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-mono">
           <div>
-            © 2026 Codexa Technologies. All rights reserved.
+            © 2026 Techlifa Technologies. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">

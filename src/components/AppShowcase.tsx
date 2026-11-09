@@ -63,7 +63,7 @@ const appsData: MobileAppItem[] = [
     spotlightColor: "rgba(16, 185, 129, 0.22)",
     badgeText: "Google Play Verified",
     description:
-      "Engineered by Codexa Technologies for instant, zero-surge city cabs, outstation rides, bike taxis, and wedding convoys across Uttar Pradesh.",
+      "Engineered by Techlifa Technologies for instant, zero-surge city cabs, outstation rides, bike taxis, and wedding convoys across Uttar Pradesh.",
     features: [
       "Zero surge pricing algorithm with transparent flat fares",
       "Real-time vehicle GPS tracking & live driver ETA",
@@ -195,7 +195,7 @@ export default function AppShowcase({ onOpenQuoteModal }: AppShowcaseProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-sm sm:text-lg text-[#A1A1B5] leading-relaxed max-w-2xl px-2"
           >
-            Codexa Technologies architects and ships end-to-end mobile applications to the Google Play Store—featuring real-time geolocation telemetry, automated payment gateways, and sub-second socket backends.
+            Techlifa Technologies architects and ships end-to-end mobile applications to the Google Play Store—featuring real-time geolocation telemetry, automated payment gateways, and sub-second socket backends.
           </motion.p>
         </div>
 
@@ -385,7 +385,7 @@ export default function AppShowcase({ onOpenQuoteModal }: AppShowcaseProps) {
               </MagneticButton>
 
               <a
-                href="https://wa.me/919580849709?text=Hello%20Codexa%20Technologies,%20I%20saw%20your%20published%20apps%20(ChaloJi%20&%20MITS%20Sadhana)%20on%20Play%20Store%20and%20want%20to%20build%20a%20custom%20mobile%20app."
+                href="https://wa.me/919580849709?text=Hello%20Techlifa%20Technologies,%20I%20saw%20your%20published%20apps%20(ChaloJi%20&%20MITS%20Sadhana)%20on%20Play%20Store%20and%20want%20to%20build%20a%20custom%20mobile%20app."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sounds.playClick()}

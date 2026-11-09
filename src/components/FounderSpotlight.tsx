@@ -50,7 +50,7 @@ export default function FounderSpotlight() {
   ];
 
   const whatsappMessage = encodeURIComponent(
-    "Hi, I saw your Codexa profile and want to speak directly with the founder regarding a new project build."
+    "Hi, I saw your Techlifa profile and want to speak directly with the founder regarding a new project build."
   );
 
   return (
@@ -90,7 +90,7 @@ export default function FounderSpotlight() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-sm sm:text-base md:text-lg text-[#A1A1B5] leading-relaxed max-w-2xl px-2"
           >
-            Direct craftsmanship with zero middlemen. Every product at Codexa is personally architected and engineered to international standards.
+            Direct craftsmanship with zero middlemen. Every product at Techlifa is personally architected and engineered to international standards.
           </motion.p>
         </div>
 
@@ -126,7 +126,7 @@ export default function FounderSpotlight() {
                   {imageLoaded ? (
                     <Image
                       src="/founder.png"
-                      alt="Codexa Technologies Founder"
+                      alt="Techlifa Technologies Founder"
                       width={280}
                       height={280}
                       className="w-full h-full object-cover object-center"
@@ -144,7 +144,7 @@ export default function FounderSpotlight() {
                         Lead Architect
                       </span>
                       <span className="text-[11px] font-mono text-[#8B6CFF] mt-0.5">
-                        Codexa Technologies
+                        Techlifa Technologies
                       </span>
                     </div>
                   )}
@@ -175,7 +175,7 @@ export default function FounderSpotlight() {
                   Rohan Shukla
                 </h3>
                 <p className="text-xs sm:text-sm font-mono text-[#8B6CFF] font-semibold mb-3">
-                  Founder & Lead Software Architect • Codexa Technologies
+                  Founder & Lead Software Architect • Techlifa Technologies
                 </p>
 
                 {/* Core Stack Badges */}
@@ -194,7 +194,7 @@ export default function FounderSpotlight() {
 
               {/* Quick Tagline */}
               <p className="text-xs sm:text-sm text-[#A1A1B5] leading-relaxed max-w-sm mb-6">
-                Directly handling system architecture, client engineering, and product velocity at Codexa Technologies.
+                Directly handling system architecture, client engineering, and product velocity at Techlifa Technologies.
               </p>
 
               {/* Social Channels */}
@@ -274,7 +274,7 @@ export default function FounderSpotlight() {
                   The Studio Manifesto
                 </span>
                 <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed italic">
-                  &ldquo;I started Codexa Technologies to do away with the typical agency nonsense — bloated WordPress templates, junior handoffs, and weeks of radio silence. When you trust us with your brand, you work directly with me. I personally write the code, optimize performance, and ensure your site converts.&rdquo;
+                  &ldquo;I started Techlifa Technologies to do away with the typical agency nonsense — bloated WordPress templates, junior handoffs, and weeks of radio silence. When you trust us with your brand, you work directly with me. I personally write the code, optimize performance, and ensure your site converts.&rdquo;
                 </p>
               </div>
 

@@ -41,7 +41,7 @@ export default function CtaBanner({ onOpenQuoteModal }: CtaBannerProps) {
           </h2>
 
           <p className="text-base sm:text-lg text-[#A1A1B5] max-w-2xl mx-auto mb-10 leading-relaxed">
-            Stop losing potential customers to slow, outdated websites and clunky apps. Partner with Codexa Technologies and ship an unstoppable digital product.
+            Stop losing potential customers to slow, outdated websites and clunky apps. Partner with Techlifa Technologies and ship an unstoppable digital product.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -54,7 +54,7 @@ export default function CtaBanner({ onOpenQuoteModal }: CtaBannerProps) {
             </button>
 
             <a
-              href="https://wa.me/919580849709?text=Hello%20Codexa%20Technologies,%20I%20am%20interested%20in%20building%20a%20project%20with%20your%20team."
+              href="https://wa.me/919580849709?text=Hello%20Techlifa%20Technologies,%20I%20am%20interested%20in%20building%20a%20project%20with%20your%20team."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-heading text-sm uppercase tracking-wider font-semibold text-white bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/40 hover:border-[#25D366] transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(37,211,102,0.25)] hover:scale-102"

@@ -78,7 +78,7 @@ const projects: ProjectData[] = [
     clientBadge: "Client: ChaloJi Mobility",
     headline: "Next-Gen Cab Booking & Smart Mobility Ecosystem",
     description:
-      "Codexa Technologies engineered ChaloJi from the ground up—powering an end-to-end multi-tier mobility platform with dual Android apps (User Rider App + Driver Partner App), real-time live GPS tracking, zero surge pricing algorithms, and seamless outstation & wedding convoy bookings.",
+      "Techlifa Technologies engineered ChaloJi from the ground up—powering an end-to-end multi-tier mobility platform with dual Android apps (User Rider App + Driver Partner App), real-time live GPS tracking, zero surge pricing algorithms, and seamless outstation & wedding convoy bookings.",
     glowGradient: "from-emerald-500/25 via-teal-500/20 to-cyan-500/25",
     capabilities: [
       "Dual Mobile Apps (Rider App & Driver Partner App)",
@@ -153,7 +153,7 @@ const projects: ProjectData[] = [
     ],
     ctaTitle: "ChaloJi - Smart Cab & Mobility Platform",
     whatsappMessage:
-      "Hello Codexa Technologies, I saw your live work on ChaloJi (https://chalojii.in) and want to build a ride-booking or mobility platform.",
+      "Hello Techlifa Technologies, I saw your live work on ChaloJi (https://chalojii.in) and want to build a ride-booking or mobility platform.",
   },
   {
     id: "mits-sadhana",
@@ -171,7 +171,7 @@ const projects: ProjectData[] = [
     clientBadge: "Client: MITS Sadhana",
     headline: "AI-Powered Vedic Spiritual Platform & Pandit Booking Engine",
     description:
-      "Codexa Technologies engineered MITS Sadhana as an end-to-end spiritual technology sanctuary—bringing verified Pandit bookings for Havans & Poojas, doorstep sacred Samagri delivery kits, intelligent 24/7 Vedic AI mentorship, and seamless daily rituals with fast pan-India UPI payments.",
+      "Techlifa Technologies engineered MITS Sadhana as an end-to-end spiritual technology sanctuary—bringing verified Pandit bookings for Havans & Poojas, doorstep sacred Samagri delivery kits, intelligent 24/7 Vedic AI mentorship, and seamless daily rituals with fast pan-India UPI payments.",
     glowGradient: "from-amber-500/25 via-purple-500/20 to-rose-500/25",
     capabilities: [
       "Online Pandit & Vedic Havan Booking",
@@ -234,7 +234,7 @@ const projects: ProjectData[] = [
     ],
     ctaTitle: "MITS Sadhana - Vedic Spiritual Tech Platform",
     whatsappMessage:
-      "Hello Codexa Technologies, I saw your live work on MITS Sadhana (https://mitssadhana.in) and want to build a high-performance web platform.",
+      "Hello Techlifa Technologies, I saw your live work on MITS Sadhana (https://mitssadhana.in) and want to build a high-performance web platform.",
   },
   {
     id: "cafewala",
@@ -251,7 +251,7 @@ const projects: ProjectData[] = [
     clientBadge: "Client: Cafewala Startup",
     headline: "Next-Gen Hospitality & Cafe Commerce Engine",
     description:
-      "Codexa Technologies architected and built Cafewala from the ground up—combining fluid 60fps micro-interactions, instant QR ordering, responsive mobile-first layouts, and rock-solid payment processing to give diners a magical ordering journey.",
+      "Techlifa Technologies architected and built Cafewala from the ground up—combining fluid 60fps micro-interactions, instant QR ordering, responsive mobile-first layouts, and rock-solid payment processing to give diners a magical ordering journey.",
     glowGradient: "from-violet-600/30 via-indigo-500/20 to-purple-600/30",
     capabilities: [
       "Interactive Visual Menu Experience",
@@ -313,7 +313,7 @@ const projects: ProjectData[] = [
     ],
     ctaTitle: "Cafewala - Startup Web Platform",
     whatsappMessage:
-      "Hello Codexa Technologies, I saw your work on Cafewala and want to build something similar.",
+      "Hello Techlifa Technologies, I saw your work on Cafewala and want to build something similar.",
   },
 ];
 
@@ -471,7 +471,7 @@ export default function Portfolio({ onSelectProject }: PortfolioProps) {
             transition={{ duration: 0.4 }}
             className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 sm:mb-5"
           >
-            <TextScramble text="Engineered by Codexa:" />{" "}
+            <TextScramble text="Engineered by Techlifa:" />{" "}
             <span className="text-silver-violet">{activeProject.name}</span>
           </motion.h2>
 
@@ -905,7 +905,7 @@ export default function Portfolio({ onSelectProject }: PortfolioProps) {
                           }`}
                         >
                           <Sparkles className="w-4 h-4" />
-                          <span>Build Your Platform With Codexa</span>
+                          <span>Build Your Platform With Techlifa</span>
                           <ArrowRight className="w-4 h-4" />
                         </button>
                       </MagneticButton>

@@ -8,32 +8,32 @@ export default function AgencyComparison() {
     {
       feature: "Core Tech Architecture",
       other: "Bloated WordPress themes & fragile PHP plugins",
-      codexa: "Next.js 14, React 19, Flutter & Tailwind CSS",
+      techlifa: "Next.js 14, React 19, Flutter & Tailwind CSS",
     },
     {
       feature: "Mobile Page Load Speed",
       other: "3.5s – 5.0s (High bounce rate & lost visitors)",
-      codexa: "Sub-450ms (Lighthouse 95+ Core Web Vitals)",
+      techlifa: "Sub-450ms (Lighthouse 95+ Core Web Vitals)",
     },
     {
       feature: "Code Ownership & IP",
       other: "Vendor lock-in or hostage proprietary builders",
-      codexa: "100% Full GitHub repository handover & zero lock-in",
+      techlifa: "100% Full GitHub repository handover & zero lock-in",
     },
     {
       feature: "Project Delivery Velocity",
       other: "Endless delays, scope creep & radio silence",
-      codexa: "Strict 1-2 week agile sprints with weekly staging links",
+      techlifa: "Strict 1-2 week agile sprints with weekly staging links",
     },
     {
       feature: "Design & Aesthetic Standard",
       other: "Generic cookie-cutter templates used by 1000s",
-      codexa: "Custom Linear/Vercel-level dark luxury aesthetic",
+      techlifa: "Custom Linear/Vercel-level dark luxury aesthetic",
     },
     {
       feature: "Communication Channel",
       other: "Slow email ticketing or junior sales middlemen",
-      codexa: "Direct engineer WhatsApp & Slack access",
+      techlifa: "Direct engineer WhatsApp & Slack access",
     },
   ];
 
@@ -52,7 +52,7 @@ export default function AgencyComparison() {
 
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3 sm:mb-5">
             Typical Agency vs{" "}
-            <span className="text-silver-violet">Codexa Technologies.</span>
+            <span className="text-silver-violet">Techlifa Technologies.</span>
           </h2>
 
           <p className="text-sm sm:text-lg text-[#A1A1B5] leading-relaxed max-w-2xl px-2">
@@ -75,14 +75,14 @@ export default function AgencyComparison() {
                 </span>
               </div>
 
-              {/* Codexa Advantage Card */}
+              {/* Techlifa Advantage Card */}
               <div className="p-3 rounded-xl bg-violet-950/30 border border-violet-500/40 shadow-[0_0_15px_rgba(108,76,245,0.2)]">
                 <div className="flex items-center gap-1.5 mb-1 text-[11px] font-mono font-semibold text-[#8B6CFF]">
                   <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>CODEXA ADVANTAGE</span>
+                  <span>TECHLIFA ADVANTAGE</span>
                 </div>
                 <p className="text-xs text-silver-light font-medium leading-relaxed pl-5">
-                  {row.codexa}
+                  {row.techlifa}
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export default function AgencyComparison() {
             </div>
             <div className="col-span-4 text-silver-violet flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#8B6CFF] animate-ping" />
-              <span>Codexa Studio</span>
+              <span>Techlifa Studio</span>
             </div>
           </div>
 
@@ -135,13 +135,13 @@ export default function AgencyComparison() {
                   <span className="text-xs leading-snug">{row.other}</span>
                 </div>
 
-                {/* Codexa Technologies */}
+                {/* Techlifa Technologies */}
                 <div className="col-span-4 flex items-start gap-2 text-zinc-200 font-medium">
                   <div className="p-0.5 rounded-full bg-violet-500/20 text-[#8B6CFF] mt-0.5 shrink-0 shadow-[0_0_10px_rgba(108,76,245,0.4)]">
                     <Check className="w-3 h-3" />
                   </div>
                   <span className="text-xs leading-snug text-silver-light">
-                    {row.codexa}
+                    {row.techlifa}
                   </span>
                 </div>
               </div>
