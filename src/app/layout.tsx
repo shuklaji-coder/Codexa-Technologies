@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "Custom Web Applications",
     "UI UX Design Studio",
     "E-commerce Website Development",
-    "Bengaluru Tech Agency",
+    "Mumbai Tech Agency",
   ],
   authors: [{ name: "Techlifa Technologies" }],
   creator: "Techlifa Technologies",

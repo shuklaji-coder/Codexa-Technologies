@@ -155,7 +155,7 @@ export default function Contact({
                   <div>
                     <div className="text-[11px] sm:text-xs font-mono text-zinc-400">Engineering HQ</div>
                     <div className="text-sm font-semibold text-white">
-                      Bengaluru & Pan-India Remote
+                      Mumbai & Pan-India Remote
                     </div>
                     <div className="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">
                       Global Client Delivery

@@ -140,7 +140,7 @@ export default function Preloader() {
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 font-mono text-[9px] sm:text-[10px] text-zinc-500 flex items-center gap-1.5 pointer-events-none select-none">
             <span className="text-[#8B6CFF]">┌</span>
             <span className="text-zinc-400">NODE:</span>
-            <span className="text-zinc-200">IN_DELHI_01</span>
+            <span className="text-zinc-200">IN_MUMBAI_01</span>
           </div>
 
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 font-mono text-[9px] sm:text-[10px] text-zinc-500 flex items-center gap-1.5 pointer-events-none select-none">
