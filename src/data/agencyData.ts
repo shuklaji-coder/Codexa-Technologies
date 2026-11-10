@@ -261,6 +261,16 @@ export const pricingPlans: PricingPlan[] = [
 
 export const testimonialsData: TestimonialItem[] = [
   {
+    id: "t-logixfleet",
+    name: "Rajesh Kannan",
+    role: "Co-Founder & CTO",
+    company: "LogixFleet Networks (Chennai)",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop",
+    rating: 5,
+    content: "Their Flutter and backend engineers built our cross-platform telemetry app in record time. Zero crashes in production, smooth 60fps animations, and outstanding post-launch dedication. Techlifa is our permanent technology partner now.",
+    projectType: "Mobile & IoT Platform",
+  },
+  {
     id: "t-chaloji",
     name: "Founding Team",
     role: "Leadership & Operations",
@@ -289,36 +299,6 @@ export const testimonialsData: TestimonialItem[] = [
     rating: 5,
     content: "Techlifa Technologies architected Cafewala with exceptional precision and velocity. From the buttery-smooth QR ordering flows to real-time order sync and instant UPI checkouts, their engineering standard is undeniably top-tier. Customer engagement jumped 3.4x within weeks.",
     projectType: "Full-Stack Cafe Ordering Platform",
-  },
-  {
-    id: "t1",
-    name: "Vikram Malhotra",
-    role: "Founder & CEO",
-    company: "FinEdge Wealth (Mumbai)",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-    rating: 5,
-    content: "Techlifa Technologies transformed our outdated web presence into a hyper-polished, Vercel-grade masterpiece. In the first month after launch, our inbound client inquiries jumped by 240%. Their speed and aesthetic sense are world-class.",
-    projectType: "Next.js Web Portal",
-  },
-  {
-    id: "t2",
-    name: "Ananya Deshmukh",
-    role: "Director of Product",
-    company: "AuraVogue India (Bengaluru)",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
-    rating: 5,
-    content: "We hired Techlifa for our custom e-commerce rollout. The attention to detail—from smooth micro-interactions to sub-second page loads—exceeded all expectations. Working with their team felt like having an elite Silicon Valley dev unit on speed dial.",
-    projectType: "Headless E-Commerce",
-  },
-  {
-    id: "t3",
-    name: "Rajesh Kannan",
-    role: "Co-Founder & CTO",
-    company: "LogixFleet Networks (Chennai)",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
-    rating: 5,
-    content: "Their Flutter and backend engineers built our cross-platform telemetry app in record time. Zero crashes in production, smooth 60fps animations, and outstanding post-launch dedication. Techlifa is our permanent technology partner now.",
-    projectType: "Mobile & IoT Platform",
   },
 ];
 

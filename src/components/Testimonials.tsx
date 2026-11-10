@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { testimonialsData } from "@/data/agencyData";
+import { TestimonialItem, testimonialsData } from "@/data/agencyData";
 import {
   Star,
   ChevronLeft,
@@ -17,17 +17,22 @@ import {
   ShieldCheck,
   CheckCircle2,
   Video,
+  Plus,
+  MessageSquareQuote,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sounds } from "@/utils/soundEffects";
 import BorderBeam from "@/components/animations/BorderBeam";
+import ReviewModal from "@/components/ReviewModal";
 
 interface TestimonialsProps {
   onOpenQuoteModal?: () => void;
 }
 
 export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(testimonialsData);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   // Video Player state
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -44,7 +49,7 @@ export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
       sounds.playClick();
     } catch {}
     setCurrentIndex((prevIdx) =>
-      prevIdx === 0 ? testimonialsData.length - 1 : prevIdx - 1
+      prevIdx === 0 ? testimonials.length - 1 : prevIdx - 1
     );
   };
 
@@ -53,7 +58,7 @@ export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
       sounds.playClick();
     } catch {}
     setCurrentIndex((prevIdx) =>
-      prevIdx === testimonialsData.length - 1 ? 0 : prevIdx + 1
+      prevIdx === testimonials.length - 1 ? 0 : prevIdx + 1
     );
   };
 
@@ -61,13 +66,13 @@ export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIdx) =>
-        prevIdx === testimonialsData.length - 1 ? 0 : prevIdx + 1
+        prevIdx === testimonials.length - 1 ? 0 : prevIdx + 1
       );
     }, 8000);
     return () => clearInterval(timer);
-  }, []);
+  }, [testimonials.length]);
 
-  const current = testimonialsData[currentIndex];
+  const current = testimonials[currentIndex] || testimonials[0];
 
   // Video playback controls
   const togglePlay = () => {
@@ -163,6 +168,20 @@ export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
           <p className="text-sm sm:text-base md:text-lg text-[#A1A1B5] leading-relaxed max-w-2xl px-2">
             Watch real client video feedback and explore endorsements from startups and enterprises scaled by Techlifa Technologies.
           </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-5">
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                setIsReviewModalOpen(true);
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600/15 hover:bg-violet-600/25 border border-violet-500/40 text-violet-300 font-mono text-xs uppercase tracking-wider font-semibold transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(108,76,245,0.25)] cursor-pointer"
+            >
+              <Plus className="w-3.5 h-3.5 text-[#00F5FF]" />
+              <span>Add a Review</span>
+            </button>
+          </div>
         </div>
 
         {/* Dual Grid: Featured Video Review (Left) + Written Carousel (Right) */}
@@ -403,7 +422,7 @@ export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
                 <div className="flex items-center justify-between px-1">
                   {/* Slide Indicator Dots */}
                   <div className="flex items-center gap-2">
-                    {testimonialsData.map((_, idx) => (
+                    {testimonials.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => {
@@ -462,7 +481,51 @@ export default function Testimonials({ onOpenQuoteModal }: TestimonialsProps) {
             </div>
           </div>
         </div>
+
+        {/* ==================== 3. ADD A REVIEW CALLOUT STRIP ==================== */}
+        <div className="mt-10 sm:mt-12 p-6 sm:p-8 rounded-3xl glass-card border border-white/[0.08] bg-gradient-to-r from-violet-950/25 via-[#0A0A18] to-cyan-950/20 shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+            <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-violet-600/30 to-cyan-500/20 border border-violet-500/40 flex items-center justify-center shrink-0 text-[#00F5FF] shadow-[0_0_25px_rgba(108,76,245,0.3)]">
+              <MessageSquareQuote className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-violet-500/15 border border-violet-500/30 text-[#8B6CFF] text-[10px] font-mono uppercase tracking-wider mb-1.5">
+                <span>Verified Client Network</span>
+              </div>
+              <h4 className="font-heading text-lg sm:text-xl font-bold text-white">
+                Are You a Techlifa Client? Add Your Review
+              </h4>
+              <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl">
+                Tell the community about your project velocity, code delivery, and production results. Your review will be featured in our verified partner showcase.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                setIsReviewModalOpen(true);
+              }}
+              className="w-full sm:w-auto violet-glow-btn px-6 sm:px-8 py-3.5 rounded-xl font-heading text-xs uppercase tracking-wider font-semibold text-white inline-flex items-center justify-center gap-2.5 cursor-pointer shadow-[0_0_25px_rgba(108,76,245,0.4)] hover:scale-105 active:scale-95 transition-all"
+            >
+              <Plus className="w-4 h-4 text-[#00F5FF]" />
+              <span>Write a Review</span>
+            </button>
+          </div>
+        </div>
       </div>
+
+      {/* Interactive Client Review Submission Modal */}
+      <ReviewModal
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+        onReviewAdded={(newReview) => {
+          setTestimonials((prev) => [newReview, ...prev]);
+          setCurrentIndex(0);
+        }}
+      />
     </section>
   );
 }

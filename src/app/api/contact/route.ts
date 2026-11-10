@@ -15,6 +15,9 @@ export async function POST(req: Request) {
       features = [],
       timeline,
       notes,
+      company,
+      role,
+      rating,
     } = body;
 
     // Read Brevo credentials strictly from server environment variables
@@ -48,7 +51,10 @@ export async function POST(req: Request) {
     const projectBudget = budget || "Standard Scope";
     const featuresList = Array.isArray(features) && features.length > 0 ? features.join(", ") : "Standard Requirements";
 
-    const subject = quoteId
+    const isReview = source.toLowerCase().includes("review");
+    const subject = isReview
+      ? `⭐ [Client Review ${rating || 5}★] ${clientName} (${company || role || "Techlifa Client"})`
+      : quoteId
       ? `🚀 [Quote #${quoteId}] New Client Lead: ${clientName} (${projectService})`
       : `🔥 [Techlifa Lead] ${clientName} wants to build: ${projectService}`;
 
@@ -103,6 +109,9 @@ export async function POST(req: Request) {
           <td class="label">Email Address</td>
           <td class="value"><a href="mailto:${clientEmail}" style="color: #60a5fa; text-decoration: none;">${clientEmail}</a></td>
         </tr>
+        ${company ? `<tr><td class="label">Company / Platform</td><td class="value highlight">${company}</td></tr>` : ""}
+        ${role ? `<tr><td class="label">Designation / Role</td><td class="value">${role}</td></tr>` : ""}
+        ${rating ? `<tr><td class="label">Client Star Rating</td><td class="value highlight">${"⭐".repeat(Number(rating) || 5)} (${rating}/5 Stars)</td></tr>` : ""}
         <tr>
           <td class="label">Requested Service</td>
           <td class="value highlight">${projectService}</td>

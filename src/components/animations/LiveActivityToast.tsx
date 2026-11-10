@@ -17,6 +17,15 @@ interface ActivityItem {
 
 const ACTIVITIES: ActivityItem[] = [
   {
+    id: "act-0",
+    icon: "📡",
+    title: "LogixFleet IoT Telemetry Live",
+    description: "60 FPS Flutter & backend telemetry app running with zero crashes in production.",
+    timeAgo: "2m ago",
+    badge: "MOBILE & IOT",
+    badgeColor: "bg-cyan-500/10 text-[#00F5FF] border-cyan-500/30",
+  },
+  {
     id: "act-1",
     icon: "🚀",
     title: "Shipped to Google Play Store",
