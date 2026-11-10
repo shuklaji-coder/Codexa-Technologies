@@ -14,6 +14,7 @@ import {
   Terminal,
   Cloud,
 } from "lucide-react";
+import CyberTerminal from "./animations/CyberTerminal";
 
 export default function TechStack() {
   const getTechIcon = (category: string) => {
@@ -60,6 +61,11 @@ export default function TechStack() {
           <p className="text-xs sm:text-sm text-[#A1A1B5]">
             Battle-tested frameworks and high-performance cloud engines ensuring 99.99% uptime, microsecond response times, and limitless scalability.
           </p>
+        </div>
+
+        {/* Live Interactive Cyber Terminal */}
+        <div className="mt-10 sm:mt-12 px-2">
+          <CyberTerminal />
         </div>
       </div>
 

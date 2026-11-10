@@ -26,6 +26,8 @@ import QuoteModal from "@/components/QuoteModal";
 import ScrollProgressLaser from "@/components/animations/ScrollProgressLaser";
 import SoundToggle from "@/components/SoundToggle";
 import MobileStickyBar from "@/components/MobileStickyBar";
+import MeteorShower from "@/components/animations/MeteorShower";
+import LiveActivityToast from "@/components/animations/LiveActivityToast";
 
 export default function Home() {
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
@@ -67,6 +69,9 @@ export default function Home() {
 
       {/* Interactive Cyber Particle Network (60fps Canvas) */}
       <ParticleCanvas />
+
+      {/* Cosmic Shooting Stars / Meteor Shower */}
+      <MeteorShower count={16} />
 
       {/* 1. Sticky Navbar */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
@@ -134,6 +139,9 @@ export default function Home() {
 
       {/* Mobile Sticky Action Bar (WhatsApp + Instant Quote) */}
       <MobileStickyBar onOpenQuoteModal={handleOpenQuoteModal} />
+
+      {/* Live Shipped Milestones & Activity Notification Toast */}
+      <LiveActivityToast />
     </main>
   );
 }

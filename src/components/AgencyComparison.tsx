@@ -2,6 +2,7 @@
 
 import { Check, X, Sparkles, Zap, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import SpeedBenchmarkSlider from "./animations/SpeedBenchmarkSlider";
 
 export default function AgencyComparison() {
   const comparisonRows = [
@@ -59,6 +60,9 @@ export default function AgencyComparison() {
             See why ambitious startups choose our engineering studio over slow, template-driven freelancers and agencies.
           </p>
         </div>
+
+        {/* Interactive Before / After Speed Benchmark Slider */}
+        <SpeedBenchmarkSlider />
 
         {/* Mobile View: High-Impact Stacked Cards (< md) */}
         <div className="block md:hidden space-y-3.5">
