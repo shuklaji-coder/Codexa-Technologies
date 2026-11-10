@@ -55,7 +55,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex items-center gap-2.5 pt-2">
               {[
-                { name: "GitHub", icon: Github, href: "https://github.com" },
+                { name: "GitHub", icon: Github, href: "https://github.com/shuklaji-coder" },
                 { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/rohan-shukla-0b8889321/" },
                 { name: "Twitter/X", icon: Twitter, href: "https://twitter.com" },
                 { name: "Instagram", icon: Instagram, href: "https://instagram.com" },

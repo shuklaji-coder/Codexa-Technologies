@@ -233,14 +233,37 @@ export default function QuoteModal({
     setStep((prev) => (Math.max(1, prev - 1) as 1 | 2 | 3));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    const generatedId = `CDX-${Math.floor(1000 + Math.random() * 9000)}`;
+    const generatedId = `TLF-${Math.floor(1000 + Math.random() * 9000)}`;
     setQuoteId(generatedId);
 
-    setTimeout(() => {
+    const selectedFeatureNames = selectedFeatures
+      .map((fid) => FEATURES.find((f) => f.id === fid)?.name)
+      .filter(Boolean) as string[];
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: calculation.category.title,
+          budget: calculation.formattedRange,
+          timeline: calculation.timeline.name,
+          features: selectedFeatureNames,
+          notes: formData.notes,
+          quoteId: generatedId,
+          source: "Interactive 3-Step Quote Modal",
+        }),
+      });
+    } catch (err) {
+      console.error("Quote modal dispatch error:", err);
+    } finally {
       setLoading(false);
       setStep(4);
       sounds.playSuccess();
@@ -252,8 +275,8 @@ export default function QuoteModal({
           origin: { y: 0.5 },
           colors: ["#6C4CF5", "#00F5FF", "#10B981", "#FFFFFF"],
         });
-      } catch {}
-    }, 600);
+      } catch { }
+    }
   };
 
   // WhatsApp Message Formatter
@@ -264,17 +287,17 @@ export default function QuoteModal({
       .join(", ");
 
     return encodeURIComponent(
-      `*New Project Quote Scope (${quoteId || "#CDX-ONLINE"})*\n\n` +
-        `• *Client Name:* ${formData.name || "Client"}\n` +
-        `• *WhatsApp:* ${formData.phone || "Not provided"}\n` +
-        `• *Email:* ${formData.email || "Not provided"}\n\n` +
-        `*Project Configuration:*\n` +
-        `• *Service:* ${calculation.category.title}\n` +
-        `• *Key Features:* ${selectedFeatureNames || "Standard Core Features"}\n` +
-        `• *Timeline:* ${calculation.timeline.name}\n` +
-        `• *Estimated Scope:* ${calculation.formattedRange} (+ GST)\n\n` +
-        (formData.notes ? `*Client Notes:* ${formData.notes}\n\n` : "") +
-        `Hi Founder, I would like to lock this quote estimate and schedule a quick kickoff call!`
+      `*New Project Quote Scope (${quoteId || "#TLF-ONLINE"})*\n\n` +
+      `• *Client Name:* ${formData.name || "Client"}\n` +
+      `• *WhatsApp:* ${formData.phone || "Not provided"}\n` +
+      `• *Email:* ${formData.email || "Not provided"}\n\n` +
+      `*Project Configuration:*\n` +
+      `• *Service:* ${calculation.category.title}\n` +
+      `• *Key Features:* ${selectedFeatureNames || "Standard Core Features"}\n` +
+      `• *Timeline:* ${calculation.timeline.name}\n` +
+      `• *Estimated Scope:* ${calculation.formattedRange} (+ GST)\n\n` +
+      (formData.notes ? `*Client Notes:* ${formData.notes}\n\n` : "") +
+      `Hi Founder, I would like to lock this quote estimate and schedule a quick kickoff call!`
     );
   };
 
@@ -342,14 +365,12 @@ export default function QuoteModal({
             <div className="flex items-center gap-1.5 sm:gap-4 font-mono text-[10px] sm:text-xs whitespace-nowrap">
               <button
                 onClick={() => setStep(1)}
-                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${
-                  step === 1 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
-                }`}
+                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${step === 1 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
+                  }`}
               >
                 <span
-                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${
-                    step === 1 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
-                  }`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${step === 1 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
+                    }`}
                 >
                   1
                 </span>
@@ -360,14 +381,12 @@ export default function QuoteModal({
 
               <button
                 onClick={() => setStep(2)}
-                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${
-                  step === 2 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
-                }`}
+                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${step === 2 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
+                  }`}
               >
                 <span
-                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${
-                    step === 2 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
-                  }`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${step === 2 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
+                    }`}
                 >
                   2
                 </span>
@@ -378,14 +397,12 @@ export default function QuoteModal({
 
               <button
                 onClick={() => setStep(3)}
-                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${
-                  step === 3 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
-                }`}
+                className={`flex items-center gap-1 sm:gap-1.5 transition-colors cursor-pointer ${step === 3 ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
+                  }`}
               >
                 <span
-                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${
-                    step === 3 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
-                  }`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] ${step === 3 ? "bg-[#8B6CFF] text-white" : "bg-white/10 text-zinc-400"
+                    }`}
                 >
                   3
                 </span>
@@ -427,20 +444,18 @@ export default function QuoteModal({
                         sounds.playClick();
                         setSelectedCategory(cat.id);
                       }}
-                      className={`relative p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between group ${
-                        isSelected
+                      className={`relative p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between group ${isSelected
                           ? "bg-violet-950/40 border-[#8B6CFF] shadow-[0_0_25px_rgba(108,76,245,0.35)]"
                           : "bg-white/[0.02] border-white/10 hover:border-violet-500/40 hover:bg-white/[0.04]"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-3">
                           <div
-                            className={`p-2.5 rounded-xl border transition-transform group-hover:scale-105 ${
-                              isSelected
+                            className={`p-2.5 rounded-xl border transition-transform group-hover:scale-105 ${isSelected
                                 ? "bg-violet-600 text-white border-violet-400"
                                 : "bg-white/5 text-zinc-400 border-white/10"
-                            }`}
+                              }`}
                           >
                             <Icon className="w-5 h-5" />
                           </div>
@@ -510,19 +525,17 @@ export default function QuoteModal({
                       <div
                         key={feat.id}
                         onClick={() => handleToggleFeature(feat.id)}
-                        className={`p-3 sm:p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
-                          isChecked
+                        className={`p-3 sm:p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${isChecked
                             ? "bg-violet-950/40 border-[#8B6CFF] shadow-[0_0_15px_rgba(108,76,245,0.25)]"
                             : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-2.5">
                           <div
-                            className={`p-2 rounded-lg ${
-                              isChecked
+                            className={`p-2 rounded-lg ${isChecked
                                 ? "bg-violet-600 text-white"
                                 : "bg-white/5 text-zinc-400"
-                            }`}
+                              }`}
                           >
                             <Icon className="w-4 h-4" />
                           </div>
@@ -537,11 +550,10 @@ export default function QuoteModal({
                         </div>
 
                         <div
-                          className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
-                            isChecked
+                          className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${isChecked
                               ? "bg-[#8B6CFF] border-[#8B6CFF] text-white"
                               : "border-white/20 bg-black/40"
-                          }`}
+                            }`}
                         >
                           {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                         </div>
@@ -572,11 +584,10 @@ export default function QuoteModal({
                           sounds.playClick();
                           setSelectedTimeline(time.id);
                         }}
-                        className={`p-3.5 rounded-xl border transition-all duration-200 cursor-pointer ${
-                          isSelected
+                        className={`p-3.5 rounded-xl border transition-all duration-200 cursor-pointer ${isSelected
                             ? "bg-emerald-950/40 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.25)]"
                             : "bg-white/[0.02] border-white/10 hover:border-white/20"
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-semibold text-white">

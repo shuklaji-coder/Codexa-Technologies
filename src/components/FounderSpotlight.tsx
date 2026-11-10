@@ -200,7 +200,7 @@ export default function FounderSpotlight() {
               {/* Social Channels */}
               <div className="flex items-center gap-2.5 mb-6">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/shuklaji-coder"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-zinc-300 hover:text-white hover:border-violet-500/60 hover:bg-violet-500/10 transition-all cursor-pointer"

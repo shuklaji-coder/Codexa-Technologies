@@ -25,6 +25,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import QuoteModal from "@/components/QuoteModal";
 import ScrollProgressLaser from "@/components/animations/ScrollProgressLaser";
 import SoundToggle from "@/components/SoundToggle";
+import MobileStickyBar from "@/components/MobileStickyBar";
 
 export default function Home() {
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
@@ -54,7 +55,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#05050A] text-white selection:bg-[#6C4CF5] selection:text-white w-full max-w-[100vw] overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#05050A] text-white selection:bg-[#6C4CF5] selection:text-white w-full max-w-[100vw] overflow-x-hidden pb-16 md:pb-0">
       {/* Top Neon Scroll Progress Laser with Glowing Comet Head */}
       <ScrollProgressLaser />
 
@@ -130,6 +131,9 @@ export default function Home() {
       />
       {/* Floating Audio FX Mute / Unmute Toggle */}
       <SoundToggle />
+
+      {/* Mobile Sticky Action Bar (WhatsApp + Instant Quote) */}
+      <MobileStickyBar onOpenQuoteModal={handleOpenQuoteModal} />
     </main>
   );
 }
