@@ -18,16 +18,22 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const dismissedRef = useRef(false);
+  const hasSpokenRef = useRef(false);
+
+  const triggerWelcomeVoice = () => {
+    if (hasSpokenRef.current) return;
+    hasSpokenRef.current = true;
+    try {
+      sounds.speak("Hello, welcome to Techlifa.");
+    } catch {}
+  };
 
   const handleDismiss = () => {
     if (dismissedRef.current) return;
     dismissedRef.current = true;
     setProgress(100);
 
-    // Speak "Hello, welcome to Techlifa." instantly on user click / entry
-    try {
-      sounds.speak("Hello, welcome to Techlifa.");
-    } catch {}
+    triggerWelcomeVoice();
 
     if (typeof window !== "undefined") {
       window.dispatchEvent(new CustomEvent("techlifa-enter"));
@@ -39,9 +45,23 @@ export default function Preloader() {
   };
 
   useEffect(() => {
-    // Dynamic authentic progress counter over ~2.2 seconds
+    // 1. Start voice immediately on the preloader screen
+    const voiceTimer = setTimeout(() => {
+      triggerWelcomeVoice();
+    }, 200);
+
+    // Browser interaction fallback: first touch or click on preloader triggers voice instantly if autoplay was delayed
+    const handleFirstGesture = () => {
+      triggerWelcomeVoice();
+    };
+
+    window.addEventListener("pointerdown", handleFirstGesture, { once: true, passive: true });
+    window.addEventListener("touchstart", handleFirstGesture, { once: true, passive: true });
+    window.addEventListener("click", handleFirstGesture, { once: true, passive: true });
+
+    // Dynamic authentic progress counter over ~2.4 seconds so the full welcome voice plays during preloader
     const startTime = Date.now();
-    const duration = 2200;
+    const duration = 2400;
 
     const interval = setInterval(() => {
       if (dismissedRef.current) {
@@ -80,18 +100,21 @@ export default function Preloader() {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      clearTimeout(voiceTimer);
       clearInterval(interval);
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("pointerdown", handleFirstGesture);
+      window.removeEventListener("touchstart", handleFirstGesture);
+      window.removeEventListener("click", handleFirstGesture);
     };
   }, []);
 
   // Cyber Telemetry Boot Text
   const getBootTelemetry = () => {
-    if (progress < 18) return ">> [SYS_INIT] BOOTING TECHLIFA QUANTUM RUNTIME...";
-    if (progress < 38) return ">> [GPU_ACCEL] COMPILING 60 FPS SHADER MATRICES...";
-    if (progress < 62) return ">> [REPO_SYNC] LINKING 50+ PRODUCTION CLIENT DEPLOYS...";
-    if (progress < 85) return ">> [AUDIT_PASS] CORE WEB VITALS 99/100 VERIFIED...";
-    if (progress < 99) return ">> [ARMED] INITIALIZING 3D CYBERNETIC INTERFACE...";
+    if (progress < 22) return ">> [VOICE_ACTIVE] 'HELLO, WELCOME TO TECHLIFA'...";
+    if (progress < 42) return ">> [GPU_ACCEL] COMPILING 60 FPS SHADER MATRICES...";
+    if (progress < 68) return ">> [REPO_SYNC] LINKING 50+ PRODUCTION CLIENT DEPLOYS...";
+    if (progress < 88) return ">> [AUDIT_PASS] CORE WEB VITALS 99/100 VERIFIED...";
     return ">> [READY] PLATFORM ARMED • ENTERING TECHLIFA STUDIO";
   };
 
@@ -171,15 +194,15 @@ export default function Preloader() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-[#8B6CFF] text-[9px] sm:text-[10px]">
                 <Activity className="w-3 h-3 text-[#00F5FF] animate-pulse" />
-                <span className="hidden xs:inline">SYSTEM STATUS:</span>
+                <span className="hidden xs:inline">STATUS:</span>
                 <span className="text-emerald-400 font-bold">ONLINE</span>
               </div>
-              <div className="flex items-center gap-1 text-zinc-400 hidden sm:flex">
-                <Sparkles className="w-3 h-3 text-[#8B6CFF]" />
-                <span className="text-[10px]">VERIFIED 60 FPS</span>
+              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-[#00F5FF] text-[9px] sm:text-[10px] font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span>VOICE: ON</span>
               </div>
             </div>
           </div>
