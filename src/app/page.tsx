@@ -27,6 +27,7 @@ import ScrollProgressLaser from "@/components/animations/ScrollProgressLaser";
 import SoundToggle from "@/components/SoundToggle";
 import MobileStickyBar from "@/components/MobileStickyBar";
 import LiveActivityToast from "@/components/animations/LiveActivityToast";
+import WeddingInviteShowcase from "@/components/WeddingInviteShowcase";
 
 export default function Home() {
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
@@ -90,6 +91,9 @@ export default function Home() {
 
       {/* 6.1 Shipped Mobile Applications & Google Play Store Ecosystem */}
       <AppShowcase onOpenQuoteModal={handleOpenQuoteModal} />
+
+      {/* 6.2 Bespoke Digital Wedding Invites Studio & Live Interactive Simulator */}
+      <WeddingInviteShowcase onOpenQuoteModal={handleOpenQuoteModal} />
 
       {/* 7. Process Section (Horizontal Timeline with Traveling Laser Beam) */}
       <Process />

@@ -39,6 +39,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
     { name: "Why Us", href: "#why-us" },
     { name: "Work", href: "#work" },
     { name: "Apps", href: "#apps" },
+    { name: "Weddings", href: "#weddings" },
     { name: "Process", href: "#process" },
     { name: "Founder", href: "#founder" },
     { name: "Pricing", href: "#pricing" },

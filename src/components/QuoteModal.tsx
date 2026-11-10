@@ -87,6 +87,14 @@ const CATEGORIES: CategoryOption[] = [
     badge: "Award-Winning",
   },
   {
+    id: "wedding",
+    title: "Bespoke Digital Wedding Invite Suite",
+    subtitle: "WhatsApp Cinematic Link, Live RSVP, Google Maps & Music",
+    basePrice: 11999,
+    icon: Sparkles,
+    badge: "Luxury Bespoke",
+  },
+  {
     id: "maint",
     title: "Maintenance & Speed Audit",
     subtitle: "Bug Fixes, 99.9% Uptime & Security Hardening",
