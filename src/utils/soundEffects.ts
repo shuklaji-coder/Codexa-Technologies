@@ -125,14 +125,63 @@ class SoundManager {
     }
   }
 
-  // Robot speech voice synthesis (Completely Disabled - No Voice)
-  public speak(_text: string, onEnd?: () => void) {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      try {
-        window.speechSynthesis.cancel();
-      } catch {}
+  // Natural Studio Speech Synthesis ("Hello, welcome to Techlifa.")
+  public speak(text: string, onEnd?: () => void) {
+    if (!this.enabled || typeof window === "undefined" || !("speechSynthesis" in window)) {
+      if (onEnd) onEnd();
+      return;
     }
-    if (onEnd) onEnd();
+
+    try {
+      window.speechSynthesis.cancel();
+
+      const speakNow = () => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95; // Crisp, calm studio pacing
+        utterance.pitch = 1.0;
+        utterance.volume = 0.95;
+
+        const voices = window.speechSynthesis.getVoices();
+        // Priority list of ultra-natural modern neural voices across Edge, Chrome, Safari
+        const preferredVoice =
+          voices.find(
+            (v) =>
+              v.lang.startsWith("en") &&
+              (v.name.includes("Natural") ||
+                v.name.includes("Google US English") ||
+                v.name.includes("Aria") ||
+                v.name.includes("Jenny") ||
+                v.name.includes("Samantha") ||
+                v.name.includes("Victoria") ||
+                v.name.includes("Siri") ||
+                v.name.toLowerCase().includes("online"))
+          ) ||
+          voices.find((v) => v.lang.startsWith("en") && !v.name.includes("Desktop")) ||
+          voices.find((v) => v.lang.startsWith("en"));
+
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+        }
+
+        if (onEnd) {
+          utterance.onend = onEnd;
+          utterance.onerror = onEnd;
+        }
+
+        window.speechSynthesis.speak(utterance);
+      };
+
+      if (window.speechSynthesis.getVoices().length > 0) {
+        speakNow();
+      } else {
+        window.speechSynthesis.onvoiceschanged = () => {
+          speakNow();
+          window.speechSynthesis.onvoiceschanged = null;
+        };
+      }
+    } catch {
+      if (onEnd) onEnd();
+    }
   }
 }
 

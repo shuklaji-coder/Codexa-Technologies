@@ -31,7 +31,7 @@ const PHRASES: RobotPhrase[] = [
 
 export default function Robot3DCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const [speechText, setSpeechText] = useState("⚡ 60 FPS Web & Mobile Engineering");
+  const [speechText, setSpeechText] = useState("Hello, welcome to Techlifa.");
   const [isActive, setIsActive] = useState(false);
 
   const headGroupRef = useRef<THREE.Group | null>(null);
@@ -39,8 +39,7 @@ export default function Robot3DCanvas() {
   const eyeLightRef = useRef<THREE.PointLight | null>(null);
   const fillLightRef = useRef<THREE.DirectionalLight | null>(null);
 
-  const phraseIdxRef = useRef<number>(0);
-  const playPhraseRef = useRef<((idx?: number) => void) | null>(null);
+  const playGreetingRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const container = mountRef.current;
@@ -402,49 +401,54 @@ export default function Robot3DCanvas() {
       }, durationMs + 100);
     };
 
-    // --- 9. ROBOT INTERACTIVE VISUAL CYCLE (SILENT - NO VOICE) ---
-    const playPhrase = (customIndex?: number) => {
-      const idx =
-        customIndex !== undefined
-          ? customIndex
-          : phraseIdxRef.current % PHRASES.length;
-      phraseIdxRef.current = idx + 1;
-
-      const phrase = PHRASES[idx % PHRASES.length];
+    // --- 9. ROBOT WELCOME GREETING: "Hello, welcome to Techlifa." ---
+    const playGreeting = () => {
       setIsActive(true);
-      setSpeechText(phrase.displayText);
+      setSpeechText("👋 Hello, welcome to Techlifa.");
 
-      // Eye color sync
-      if (eyeGlowRef.current) eyeGlowRef.current.color.setHex(phrase.glow);
-      if (eyeLightRef.current) eyeLightRef.current.color.setHex(phrase.light);
-      if (fillLightRef.current) fillLightRef.current.color.setHex(phrase.glow);
+      // Eye color sync to brilliant electric cyan
+      if (eyeGlowRef.current) eyeGlowRef.current.color.setHex(0x00f5ff);
+      if (eyeLightRef.current) eyeLightRef.current.color.setHex(0x00f5ff);
+      if (fillLightRef.current) fillLightRef.current.color.setHex(0x00f5ff);
 
-      triggerSlowBlink(280);
+      triggerSlowBlink(300);
 
-      // Head nod
+      // Graceful robotic nod
       if (headGroupRef.current) {
-        headGroupRef.current.rotation.x += 0.22;
-        headGroupRef.current.position.y += 0.06;
+        headGroupRef.current.rotation.x += 0.25;
+        headGroupRef.current.position.y += 0.07;
         setTimeout(() => {
-          if (headGroupRef.current) headGroupRef.current.rotation.x -= 0.11;
-        }, 300);
+          if (headGroupRef.current) headGroupRef.current.rotation.x -= 0.12;
+        }, 320);
       }
+
+      // Speak the single requested line
+      sounds.speak("Hello, welcome to Techlifa.", () => {
+        setIsActive(false);
+      });
 
       setTimeout(() => {
         setIsActive(false);
-      }, 2500);
+      }, 2600);
     };
 
-    playPhraseRef.current = playPhrase;
+    playGreetingRef.current = playGreeting;
 
     const handleClick = () => {
-      playPhrase();
+      playGreeting();
     };
 
     const handleMouseEnter = () => {
       sounds.playHover();
     };
 
+    const handleTechlifaEnter = () => {
+      setTimeout(() => {
+        playGreeting();
+      }, 450);
+    };
+
+    window.addEventListener("techlifa-enter", handleTechlifaEnter);
     container.addEventListener("click", handleClick);
     container.addEventListener("mouseenter", handleMouseEnter);
 
@@ -506,6 +510,7 @@ export default function Robot3DCanvas() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("techlifa-enter", handleTechlifaEnter);
       container.removeEventListener("click", handleClick);
       container.removeEventListener("mouseenter", handleMouseEnter);
       if (container.contains(renderer.domElement)) {
@@ -515,10 +520,10 @@ export default function Robot3DCanvas() {
     };
   }, []);
 
-  const handleCyclePhrase = (e: React.MouseEvent) => {
+  const handleGreetingClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (playPhraseRef.current) {
-      playPhraseRef.current();
+    if (playGreetingRef.current) {
+      playGreetingRef.current();
     }
   };
 
@@ -529,9 +534,9 @@ export default function Robot3DCanvas() {
 
       {/* Floating Interactive Speech Bubble above Robot */}
       <div
-        onClick={handleCyclePhrase}
+        onClick={handleGreetingClick}
         className="absolute -top-1 sm:top-1 left-1/2 -translate-x-1/2 z-20 transition-all duration-300 transform group-hover:scale-105 w-[92%] max-w-[280px] text-center cursor-pointer"
-        title="Interactive 3D Assistant"
+        title="Tap to Hear: Hello, welcome to Techlifa"
       >
         <div className="relative px-3.5 py-2 rounded-2xl bg-[#0B0B18]/95 border border-violet-500/40 hover:border-violet-400 shadow-[0_0_25px_rgba(108,76,245,0.45)] backdrop-blur-md flex items-center justify-center gap-2 transition-all">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
@@ -546,13 +551,14 @@ export default function Robot3DCanvas() {
       {/* Interactive Helper Pill below Robot */}
       <div className="absolute bottom-0 sm:bottom-2 left-1/2 -translate-x-1/2 z-20 text-center w-full px-2">
         <button
-          onClick={handleCyclePhrase}
+          type="button"
+          onClick={handleGreetingClick}
           className="text-[9px] sm:text-[10px] font-mono text-zinc-300 hover:text-white bg-black/85 hover:bg-violet-950/60 px-3.5 py-1.5 rounded-full border border-violet-500/30 hover:border-violet-400 backdrop-blur-md shadow-[0_0_15px_rgba(108,76,245,0.2)] inline-flex items-center gap-1.5 cursor-pointer transition-all duration-300"
         >
-          <span>🤖</span>
-          <span>Interactive 3D Unit</span>
+          <span>👋</span>
+          <span>Tap Robot</span>
           <span className="w-1 h-1 rounded-full bg-emerald-400" />
-          <span className="text-[#8B6CFF] font-semibold">Tap to Cycle</span>
+          <span className="text-[#00F5FF] font-semibold">&ldquo;Hello, welcome to Techlifa&rdquo;</span>
         </button>
       </div>
     </div>
