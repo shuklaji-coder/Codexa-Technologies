@@ -203,10 +203,10 @@ export default function SpeedBenchmarkSlider() {
           style={{ left: `${sliderPosition}%` }}
         >
           {/* Thumb Capsule */}
-          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#0D0D1F] border-2 border-[#00F5FF] shadow-[0_0_25px_rgba(0,245,255,0.7)] flex items-center justify-center text-white pointer-events-auto transform hover:scale-110 active:scale-95 transition-transform">
-            <div className="flex items-center gap-0.5 text-[9px] sm:text-[10px] font-mono font-bold tracking-tighter text-[#00F5FF]">
-              <span>◀</span>
-              <span>▶</span>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0D0D1F] border-2 border-[#00F5FF] shadow-[0_0_25px_rgba(0,245,255,0.7)] flex items-center justify-center pointer-events-auto transform hover:scale-110 active:scale-95 transition-transform">
+            <div className="flex items-center gap-1">
+              <span className="w-0.5 h-3 sm:h-3.5 rounded-full bg-[#00F5FF]" />
+              <span className="w-0.5 h-3 sm:h-3.5 rounded-full bg-[#00F5FF]" />
             </div>
           </div>
         </div>
