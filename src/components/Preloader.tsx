@@ -136,7 +136,7 @@ export default function Preloader() {
             {/* Top-Right: Audio & FPS status */}
             <div className="flex items-center gap-1.5 text-emerald-400 shrink-0">
               <Volume2 className="w-3 h-3 text-[#8B6CFF] animate-pulse shrink-0" />
-              <span>ALEXA ARMED</span>
+              <span>AUDIO ARMED</span>
               <span className="text-zinc-500 hidden sm:inline">• 60 FPS</span>
             </div>
           </div>

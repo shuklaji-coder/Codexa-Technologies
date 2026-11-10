@@ -15,13 +15,6 @@ interface RobotPhrase {
 
 const PHRASES: RobotPhrase[] = [
   {
-    audioSrc: "/robot-welcome.mp3",
-    speechText: "Hello! Welcome to Techlifa Technologies.",
-    displayText: "👋 Hello! Welcome to Techlifa Technologies.",
-    glow: 0xc4b5fd,
-    light: 0xffffff,
-  },
-  {
     audioSrc: "/robot-phrase1.mp3",
     speechText: "We engineer high-performance web and mobile applications.",
     displayText: "⚡ We build 60 FPS Web & Mobile Apps",
@@ -46,7 +39,7 @@ const PHRASES: RobotPhrase[] = [
 
 export default function Robot3DCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const [speechText, setSpeechText] = useState("👋 Hello! Welcome to Techlifa Technologies.");
+  const [speechText, setSpeechText] = useState("⚡ We build 60 FPS Web & Mobile Apps");
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const headGroupRef = useRef<THREE.Group | null>(null);
@@ -553,97 +546,6 @@ export default function Robot3DCanvas() {
     };
   }, []);
 
-  // Bulletproof Autonomous & Gesture Speech System
-  useEffect(() => {
-    let hasSuccessfullySpoken = false;
-    let activeAudio: HTMLAudioElement | null = null;
-
-    const playSpeechNow = () => {
-      if (hasSuccessfullySpoken) return;
-
-      try {
-        if (!activeAudio) {
-          activeAudio = new Audio("/robot-welcome.mp3");
-          activeAudio.volume = 1.0;
-        }
-
-        const playPromise = activeAudio.play();
-
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              hasSuccessfullySpoken = true;
-              setIsSpeaking(true);
-              setSpeechText("👋 Hello! Welcome to Techlifa Technologies.");
-
-              // Head greeting nod
-              if (headGroupRef.current) {
-                headGroupRef.current.rotation.x += 0.28;
-                headGroupRef.current.position.y += 0.08;
-                setTimeout(() => {
-                  if (headGroupRef.current) headGroupRef.current.rotation.x -= 0.14;
-                }, 320);
-              }
-
-              activeAudio!.onended = () => {
-                setIsSpeaking(false);
-              };
-
-              setTimeout(() => {
-                setIsSpeaking(false);
-              }, 4000);
-
-              // Clean up global listeners once successfully playing
-              cleanup();
-            })
-            .catch(() => {
-              // Autoplay policy prevented playback on cold start.
-              // Crucial: DO NOT mark hasSuccessfullySpoken = true!
-              // DO NOT remove listeners! Keep listeners active so first interaction plays audio!
-            });
-        }
-      } catch {
-        // Safe catch - keep listeners active
-      }
-    };
-
-    const handleFirstGesture = () => {
-      if (!hasSuccessfullySpoken) {
-        playSpeechNow();
-      }
-    };
-
-    const cleanup = () => {
-      window.removeEventListener("click", handleFirstGesture);
-      window.removeEventListener("pointerdown", handleFirstGesture);
-      window.removeEventListener("touchstart", handleFirstGesture);
-      window.removeEventListener("keydown", handleFirstGesture);
-      window.removeEventListener("techlifa-enter", handleFirstGesture);
-    };
-
-    // User gesture listeners (ANY tap, click, or keydown anywhere on the page)
-    window.addEventListener("click", handleFirstGesture, { passive: true });
-    window.addEventListener("pointerdown", handleFirstGesture, { passive: true });
-    window.addEventListener("touchstart", handleFirstGesture, { passive: true });
-    window.addEventListener("keydown", handleFirstGesture, { passive: true });
-    window.addEventListener("techlifa-enter", handleFirstGesture, { passive: true });
-
-    // Autonomous playback attempts:
-    // 1. Initial attempt on load (at 200ms)
-    // 2. Right when preloader finishes (at 1600ms)
-    const t1 = setTimeout(playSpeechNow, 200);
-    const t2 = setTimeout(playSpeechNow, 1600);
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      cleanup();
-      if (activeAudio) {
-        activeAudio.pause();
-      }
-    };
-  }, []);
-
   const handleManualSpeech = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (playPhraseRef.current) {
@@ -653,9 +555,6 @@ export default function Robot3DCanvas() {
 
   return (
     <div className="relative w-full aspect-[4/4.2] max-w-[280px] sm:max-w-[400px] flex items-center justify-center select-none cursor-pointer group mx-auto my-1 sm:my-0">
-      {/* Hidden pre-buffering audio tag */}
-      <audio id="robot-welcome-audio" src="/robot-welcome.mp3" preload="auto" playsInline className="hidden" />
-
       {/* 3D Canvas Mount */}
       <div ref={mountRef} className="w-full h-full relative z-10" />
 
@@ -663,7 +562,7 @@ export default function Robot3DCanvas() {
       <div
         onClick={handleManualSpeech}
         className="absolute -top-1 sm:top-1 left-1/2 -translate-x-1/2 z-20 transition-all duration-300 transform group-hover:scale-105 w-[92%] max-w-[280px] text-center cursor-pointer"
-        title="Alexa AI Voice"
+        title="Techlifa AI Voice"
       >
         <div className="relative px-3.5 py-2 rounded-2xl bg-[#0B0B18]/95 border border-violet-500/40 hover:border-violet-400 shadow-[0_0_25px_rgba(108,76,245,0.45)] backdrop-blur-md flex items-center justify-center gap-2 transition-all">
           {/* Audio Equalizer wave or green live ping */}
@@ -694,7 +593,7 @@ export default function Robot3DCanvas() {
           className="text-[9px] sm:text-[10px] font-mono text-zinc-300 hover:text-white bg-black/85 hover:bg-violet-950/60 px-3.5 py-1.5 rounded-full border border-violet-500/30 hover:border-violet-400 backdrop-blur-md shadow-[0_0_15px_rgba(108,76,245,0.2)] inline-flex items-center gap-1.5 cursor-pointer transition-all duration-300"
         >
           <span>🎙️</span>
-          <span>{isSpeaking ? "Alexa AI Speaking..." : "Alexa Voice Auto-Active"}</span>
+          <span>{isSpeaking ? "Techlifa AI Speaking..." : "Click to Speak"}</span>
           <span className="w-1 h-1 rounded-full bg-emerald-400" />
           <span className="text-[#8B6CFF] font-semibold">Techlifa AI</span>
         </button>
