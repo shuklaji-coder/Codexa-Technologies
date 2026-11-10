@@ -26,7 +26,6 @@ import QuoteModal from "@/components/QuoteModal";
 import ScrollProgressLaser from "@/components/animations/ScrollProgressLaser";
 import SoundToggle from "@/components/SoundToggle";
 import MobileStickyBar from "@/components/MobileStickyBar";
-import MeteorShower from "@/components/animations/MeteorShower";
 import LiveActivityToast from "@/components/animations/LiveActivityToast";
 
 export default function Home() {
@@ -70,8 +69,6 @@ export default function Home() {
       {/* Interactive Cyber Particle Network (60fps Canvas) */}
       <ParticleCanvas />
 
-      {/* Cosmic Shooting Stars / Meteor Shower */}
-      <MeteorShower count={16} />
 
       {/* 1. Sticky Navbar */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
