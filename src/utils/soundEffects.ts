@@ -91,32 +91,9 @@ class SoundManager {
     }
   }
 
-  // Sci-fi robot voice chirp (Three.js robot click)
+  // Sci-fi robot voice chirp (Disabled - no voice)
   public playRobot() {
-    if (!this.enabled) return;
-    const ctx = this.getContext();
-    if (!ctx) return;
-
-    try {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(700, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(1400, ctx.currentTime + 0.07);
-      osc.frequency.exponentialRampToValueAtTime(950, ctx.currentTime + 0.14);
-
-      gain.gain.setValueAtTime(0.06, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-      osc.stop(ctx.currentTime + 0.15);
-    } catch {
-      // AudioContext safe catch
-    }
+    // Voice audio completely disabled
   }
 
   // Form submit / quote success chime (Harmonic C5 -> E5)
@@ -148,54 +125,14 @@ class SoundManager {
     }
   }
 
-  // Robot speech voice synthesis
-  public speak(text: string, onEnd?: () => void) {
-    if (!this.enabled || typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const speakNow = () => {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1.0;
-        utterance.pitch = 1.05;
-        utterance.volume = 1.0;
-
-        const voices = window.speechSynthesis.getVoices();
-        const preferredVoice =
-          voices.find(
-            (v) =>
-              v.lang.startsWith("en") &&
-              (v.name.includes("Zira") ||
-                v.name.includes("Aria") ||
-                v.name.includes("Jenny") ||
-                v.name.includes("Samantha") ||
-                v.name.includes("Victoria") ||
-                v.name.includes("Google US English") ||
-                v.name.toLowerCase().includes("female"))
-          ) ||
-          voices.find((v) => v.name.includes("Google") && v.lang.startsWith("en")) ||
-          voices.find((v) => v.lang.startsWith("en"));
-
-        if (preferredVoice) {
-          utterance.voice = preferredVoice;
-        }
-
-        if (onEnd) {
-          utterance.onend = onEnd;
-        }
-        window.speechSynthesis.speak(utterance);
-      };
-
-      if (window.speechSynthesis.getVoices().length > 0) {
-        speakNow();
-      } else {
-        window.speechSynthesis.onvoiceschanged = () => {
-          speakNow();
-          window.speechSynthesis.onvoiceschanged = null;
-        };
-      }
-    } catch {
-      // Safe catch
+  // Robot speech voice synthesis (Completely Disabled - No Voice)
+  public speak(_text: string, onEnd?: () => void) {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch {}
     }
+    if (onEnd) onEnd();
   }
 }
 

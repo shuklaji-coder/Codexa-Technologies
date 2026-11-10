@@ -3,11 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { sounds } from "@/utils/soundEffects";
-import { Volume2 } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface RobotPhrase {
-  audioSrc: string;
-  speechText: string;
   displayText: string;
   glow: number;
   light: number;
@@ -15,32 +13,26 @@ interface RobotPhrase {
 
 const PHRASES: RobotPhrase[] = [
   {
-    audioSrc: "/robot-phrase1.mp3",
-    speechText: "We engineer high-performance web and mobile applications.",
-    displayText: "⚡ We build 60 FPS Web & Mobile Apps",
+    displayText: "⚡ 60 FPS Web & Mobile Engineering",
     glow: 0x00f5ff,
     light: 0x00f5ff,
   },
   {
-    audioSrc: "/robot-phrase2.mp3",
-    speechText: "Explore our live client work like ChaloJi and MITS Sadhana below!",
-    displayText: "🚀 Explore ChaloJi & MITS Sadhana below!",
+    displayText: "🚀 Shipped: ChaloJi & MITS Sadhana",
     glow: 0x10b981,
     light: 0x10b981,
   },
   {
-    audioSrc: "/robot-phrase3.mp3",
-    speechText: "Ready to launch your project? Let's build something extraordinary together!",
-    displayText: "✨ Ready to launch? Click Start Your Project!",
-    glow: 0xfbbf24,
-    light: 0xfbbf24,
+    displayText: "✨ Next.js 14 • 99+ Core Web Vitals",
+    glow: 0x8b6cff,
+    light: 0x8b6cff,
   },
 ];
 
 export default function Robot3DCanvas() {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const [speechText, setSpeechText] = useState("⚡ We build 60 FPS Web & Mobile Apps");
-  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speechText, setSpeechText] = useState("⚡ 60 FPS Web & Mobile Engineering");
+  const [isActive, setIsActive] = useState(false);
 
   const headGroupRef = useRef<THREE.Group | null>(null);
   const eyeGlowRef = useRef<THREE.MeshBasicMaterial | null>(null);
@@ -410,7 +402,7 @@ export default function Robot3DCanvas() {
       }, durationMs + 100);
     };
 
-    // --- 9. ROBOT VOICE SPEECH SYSTEM (ALEXA STYLE) ---
+    // --- 9. ROBOT INTERACTIVE VISUAL CYCLE (SILENT - NO VOICE) ---
     const playPhrase = (customIndex?: number) => {
       const idx =
         customIndex !== undefined
@@ -419,8 +411,7 @@ export default function Robot3DCanvas() {
       phraseIdxRef.current = idx + 1;
 
       const phrase = PHRASES[idx % PHRASES.length];
-      sounds.playRobot();
-      setIsSpeaking(true);
+      setIsActive(true);
       setSpeechText(phrase.displayText);
 
       // Eye color sync
@@ -428,42 +419,20 @@ export default function Robot3DCanvas() {
       if (eyeLightRef.current) eyeLightRef.current.color.setHex(phrase.light);
       if (fillLightRef.current) fillLightRef.current.color.setHex(phrase.glow);
 
-      triggerSlowBlink(300);
+      triggerSlowBlink(280);
 
       // Head nod
       if (headGroupRef.current) {
-        headGroupRef.current.rotation.x += 0.28;
-        headGroupRef.current.position.y += 0.08;
+        headGroupRef.current.rotation.x += 0.22;
+        headGroupRef.current.position.y += 0.06;
         setTimeout(() => {
-          if (headGroupRef.current) headGroupRef.current.rotation.x -= 0.14;
-        }, 320);
-      }
-
-      // Play high-fidelity studio Alexa voice audio
-      try {
-        const audio = new Audio(phrase.audioSrc);
-        audio.volume = 1.0;
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              audio.onended = () => setIsSpeaking(false);
-            })
-            .catch(() => {
-              sounds.speak(phrase.speechText, () => {
-                setIsSpeaking(false);
-              });
-            });
-        }
-      } catch {
-        sounds.speak(phrase.speechText, () => {
-          setIsSpeaking(false);
-        });
+          if (headGroupRef.current) headGroupRef.current.rotation.x -= 0.11;
+        }, 300);
       }
 
       setTimeout(() => {
-        setIsSpeaking(false);
-      }, 4200);
+        setIsActive(false);
+      }, 2500);
     };
 
     playPhraseRef.current = playPhrase;
@@ -546,7 +515,7 @@ export default function Robot3DCanvas() {
     };
   }, []);
 
-  const handleManualSpeech = (e: React.MouseEvent) => {
+  const handleCyclePhrase = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (playPhraseRef.current) {
       playPhraseRef.current();
@@ -560,28 +529,16 @@ export default function Robot3DCanvas() {
 
       {/* Floating Interactive Speech Bubble above Robot */}
       <div
-        onClick={handleManualSpeech}
+        onClick={handleCyclePhrase}
         className="absolute -top-1 sm:top-1 left-1/2 -translate-x-1/2 z-20 transition-all duration-300 transform group-hover:scale-105 w-[92%] max-w-[280px] text-center cursor-pointer"
-        title="Techlifa AI Voice"
+        title="Interactive 3D Assistant"
       >
         <div className="relative px-3.5 py-2 rounded-2xl bg-[#0B0B18]/95 border border-violet-500/40 hover:border-violet-400 shadow-[0_0_25px_rgba(108,76,245,0.45)] backdrop-blur-md flex items-center justify-center gap-2 transition-all">
-          {/* Audio Equalizer wave or green live ping */}
-          {isSpeaking ? (
-            <div className="flex items-center gap-0.5 shrink-0" title="Speaking">
-              <span className="w-1 h-3 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="w-1 h-4 bg-emerald-400 rounded-full animate-bounce" />
-              <span className="w-1 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            </div>
-          ) : (
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
-          )}
-
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
           <span className="text-[10px] sm:text-xs font-mono font-medium text-white truncate">
             {speechText}
           </span>
-
-          <Volume2 className={`w-3.5 h-3.5 shrink-0 ${isSpeaking ? "text-emerald-400 animate-pulse" : "text-[#8B6CFF]"}`} />
-
+          <Sparkles className="w-3.5 h-3.5 text-[#00F5FF] shrink-0" />
           <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-[#0B0B18] border-r border-b border-violet-500/40 transform rotate-45" />
         </div>
       </div>
@@ -589,13 +546,13 @@ export default function Robot3DCanvas() {
       {/* Interactive Helper Pill below Robot */}
       <div className="absolute bottom-0 sm:bottom-2 left-1/2 -translate-x-1/2 z-20 text-center w-full px-2">
         <button
-          onClick={handleManualSpeech}
+          onClick={handleCyclePhrase}
           className="text-[9px] sm:text-[10px] font-mono text-zinc-300 hover:text-white bg-black/85 hover:bg-violet-950/60 px-3.5 py-1.5 rounded-full border border-violet-500/30 hover:border-violet-400 backdrop-blur-md shadow-[0_0_15px_rgba(108,76,245,0.2)] inline-flex items-center gap-1.5 cursor-pointer transition-all duration-300"
         >
-          <span>🎙️</span>
-          <span>{isSpeaking ? "Techlifa AI Speaking..." : "Click to Speak"}</span>
+          <span>🤖</span>
+          <span>Interactive 3D Unit</span>
           <span className="w-1 h-1 rounded-full bg-emerald-400" />
-          <span className="text-[#8B6CFF] font-semibold">Techlifa AI</span>
+          <span className="text-[#8B6CFF] font-semibold">Tap to Cycle</span>
         </button>
       </div>
     </div>

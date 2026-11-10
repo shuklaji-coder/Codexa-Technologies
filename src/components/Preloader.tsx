@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { sounds } from "@/utils/soundEffects";
 import {
-  Volume2,
   Sparkles,
   ShieldCheck,
   Cpu,
@@ -91,7 +90,7 @@ export default function Preloader() {
     if (progress < 38) return ">> [GPU_ACCEL] COMPILING 60 FPS SHADER MATRICES...";
     if (progress < 62) return ">> [REPO_SYNC] LINKING 50+ PRODUCTION CLIENT DEPLOYS...";
     if (progress < 85) return ">> [AUDIT_PASS] CORE WEB VITALS 99/100 VERIFIED...";
-    if (progress < 99) return ">> [ARMED] SYNCHRONIZING AUDIO & 3D INTERFACE...";
+    if (progress < 99) return ">> [ARMED] INITIALIZING 3D CYBERNETIC INTERFACE...";
     return ">> [READY] PLATFORM ARMED • ENTERING TECHLIFA STUDIO";
   };
 
@@ -178,8 +177,8 @@ export default function Preloader() {
                 <span className="text-emerald-400 font-bold">ONLINE</span>
               </div>
               <div className="flex items-center gap-1 text-zinc-400 hidden sm:flex">
-                <Volume2 className="w-3 h-3 text-[#8B6CFF]" />
-                <span className="text-[10px]">AUDIO ARMED</span>
+                <Sparkles className="w-3 h-3 text-[#8B6CFF]" />
+                <span className="text-[10px]">VERIFIED 60 FPS</span>
               </div>
             </div>
           </div>
