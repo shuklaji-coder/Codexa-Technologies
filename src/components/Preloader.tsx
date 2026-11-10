@@ -24,8 +24,9 @@ export default function Preloader() {
     dismissedRef.current = true;
     setProgress(100);
 
+    // Speak "Hello, welcome to Techlifa." instantly on user click / entry
     try {
-      sounds.playSuccess();
+      sounds.speak("Hello, welcome to Techlifa.");
     } catch {}
 
     if (typeof window !== "undefined") {

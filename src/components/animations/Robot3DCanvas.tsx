@@ -402,7 +402,7 @@ export default function Robot3DCanvas() {
     };
 
     // --- 9. ROBOT WELCOME GREETING: "Hello, welcome to Techlifa." ---
-    const playGreeting = () => {
+    const playGreeting = (speakVoice: boolean = true) => {
       setIsActive(true);
       setSpeechText("👋 Hello, welcome to Techlifa.");
 
@@ -422,20 +422,21 @@ export default function Robot3DCanvas() {
         }, 320);
       }
 
-      // Speak the single requested line
-      sounds.speak("Hello, welcome to Techlifa.", () => {
-        setIsActive(false);
-      });
+      if (speakVoice) {
+        sounds.speak("Hello, welcome to Techlifa.", () => {
+          setIsActive(false);
+        });
+      }
 
       setTimeout(() => {
         setIsActive(false);
       }, 2600);
     };
 
-    playGreetingRef.current = playGreeting;
+    playGreetingRef.current = () => playGreeting(true);
 
     const handleClick = () => {
-      playGreeting();
+      playGreeting(true);
     };
 
     const handleMouseEnter = () => {
@@ -443,9 +444,10 @@ export default function Robot3DCanvas() {
     };
 
     const handleTechlifaEnter = () => {
+      // Robot visually nods in sync with the entry greeting
       setTimeout(() => {
-        playGreeting();
-      }, 450);
+        playGreeting(false);
+      }, 200);
     };
 
     window.addEventListener("techlifa-enter", handleTechlifaEnter);

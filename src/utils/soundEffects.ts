@@ -136,10 +136,16 @@ class SoundManager {
       window.speechSynthesis.cancel();
 
       const speakNow = () => {
+        try {
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+          }
+        } catch {}
+
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = 0.95; // Crisp, calm studio pacing
         utterance.pitch = 1.0;
-        utterance.volume = 0.95;
+        utterance.volume = 1.0;
 
         const voices = window.speechSynthesis.getVoices();
         // Priority list of ultra-natural modern neural voices across Edge, Chrome, Safari
@@ -174,9 +180,10 @@ class SoundManager {
       if (window.speechSynthesis.getVoices().length > 0) {
         speakNow();
       } else {
+        // Immediate speak fallback so there's zero delay on user gesture
+        speakNow();
         window.speechSynthesis.onvoiceschanged = () => {
-          speakNow();
-          window.speechSynthesis.onvoiceschanged = null;
+          // Voices ready for subsequent interactions
         };
       }
     } catch {
